@@ -39,6 +39,8 @@ Clipboard access works on localhost and HTTPS. A legacy clipboard fallback and a
 
 Facilitator mode is a client-side convenience, not access control. System access and GitHub permissions are managed externally. The supplied external destinations require the consultant's existing authorized access.
 
+For Integration Suite, each consultant uses their own SAP BTP trial account, with Cloud Integration enabled. The environment button opens the SAP BTP trial cockpit; consultants open their own Integration Suite subscription from there. The page also links to SAP's subscription setup documentation. The displayed SFTP credential alias must refer to security material in the consultant's own trial tenant; test credentials are obtained from the facilitator and are never stored in this repository.
+
 ## Verification
 
 `verify.cjs` is an optional browser check using Playwright and an installed Chrome browser. It is not loaded by the page and adds no runtime dependency. With Playwright available to Node, start the local server above and run:

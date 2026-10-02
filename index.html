@@ -8,7 +8,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
   <title>Employee Anniversary Integration · TSP Acceptance Test</title>
   <link rel="icon" href="favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=4">
   <script src="app.js?v=3" defer></script>
 </head>
 <body>
@@ -56,7 +56,7 @@
           <li>Python 3 available</li>
           <li>Access to your AI coding agent in VS Code</li>
           <li>Access to TSP SAP demo system IX1</li>
-          <li>Access to TSP SAP Integration Suite</li>
+          <li>Your own SAP BTP trial account with SAP Integration Suite and Cloud Integration enabled</li>
         </ul>
         <div class="code-block"><pre><code id="environment-commands">git --version
 python3 --version</code></pre><button type="button" class="copy-button" data-copy="environment-commands" aria-label="Copy environment check commands">Copy</button></div>
@@ -67,8 +67,8 @@ python3 --version</code></pre><button type="button" class="copy-button" data-cop
         <div class="section-heading"><span class="section-number">02</span><h2>Your demo environment</h2></div>
         <div class="environment-grid">
           <div class="environment-cell"><p class="eyebrow">SAP</p><h3>IX1</h3><p>TSP SAP Development Demo System</p><span class="small-badge">DEMO / NON-PRODUCTION</span></div>
-          <div class="environment-cell"><p class="eyebrow">INTEGRATION</p><h3>SAP Integration Suite</h3><p>Your demo integration workspace.</p><a class="button button-secondary" href="https://tsp-lac-extension-suite-nvk68dqy.integrationsuite.cfapps.eu10-003.hana.ondemand.com/shell/design" target="_blank" rel="noopener noreferrer">Open Integration Suite <span aria-hidden="true">↗</span></a></div>
-          <div class="environment-cell sftp-cell"><p class="eyebrow">SFTP</p><dl class="environment-details"><div><dt>SFTP Host</dt><dd>us-east-1.sftpcloud.io</dd></div><div><dt>SFTP Folder</dt><dd><code>/incoming</code></dd></div><div><dt>CPI Credential Alias</dt><dd><code>SFTPDEMO_GREBOREDO</code></dd></div></dl><p class="small-text">The alias identifies SAP Integration Suite security material.</p></div>
+          <div class="environment-cell" id="integration-trial"><p class="eyebrow">INTEGRATION</p><h3>SAP Integration Suite</h3><p>Use your own SAP BTP trial account with Cloud Integration enabled. Each consultant uses their own trial tenant.</p><a class="button button-secondary" href="https://cockpit.hanatrial.ondemand.com/trial/" target="_blank" rel="noopener noreferrer">Open SAP BTP Trial <span aria-hidden="true">↗</span></a><p class="small-text">In your trial subaccount, open <strong>Services → Instances and Subscriptions → Integration Suite → Go to Application</strong>.</p><a class="small-text" href="https://help.sap.com/docs/integration-suite/sap-integration-suite/subscribing-to-integration-suite" target="_blank" rel="noopener noreferrer">SAP Integration Suite setup guide <span aria-hidden="true">↗</span></a></div>
+          <div class="environment-cell sftp-cell"><p class="eyebrow">SFTP</p><dl class="environment-details"><div><dt>SFTP Host</dt><dd>us-east-1.sftpcloud.io</dd></div><div><dt>SFTP Folder</dt><dd><code>/incoming</code></dd></div><div><dt>CPI Credential Alias</dt><dd><code>SFTPDEMO_GREBOREDO</code></dd></div></dl><p class="small-text">The alias refers to security material in your own trial tenant. If it is not configured yet, ask the facilitator for the test SFTP credentials and set it up there.</p></div>
         </div>
         <p class="safety-note">Do not enter, store or commit passwords or secrets in the project repository.</p>
       </section>

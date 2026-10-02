@@ -73,6 +73,7 @@ main { min-width: 0; }
 .environment-cell .eyebrow { margin-bottom: 12px; }
 .environment-cell p:not(.eyebrow) { font-size: 13px; }
 .environment-cell .button { margin-top: 6px; }
+#integration-trial .button + p { margin-top: 16px; }
 .small-badge { color: var(--muted); font-size: 9px; font-weight: 650; letter-spacing: .65px; border: 1px solid var(--border); background: var(--soft); border-radius: 3px; display: inline-block; padding: 3px 7px; }
 .sftp-cell { grid-column: 1 / -1; border-top: 1px solid var(--border); background: #fafbfd; }
 .environment-details { display: grid; grid-template-columns: 1fr .55fr 1.1fr; gap: 20px; margin: 0 0 12px; }

@@ -129,10 +129,14 @@ const pass = name => { results.push(name); console.log(`PASS ${name}`); };
     await page.goto(base);
     const destinations = [
       'https://github.com/TSP-LAC/tsp-sap-development-template',
-      'https://tsp-lac-extension-suite-nvk68dqy.integrationsuite.cfapps.eu10-003.hana.ondemand.com/shell/design'
+      'https://cockpit.hanatrial.ondemand.com/trial/',
+      'https://help.sap.com/docs/integration-suite/sap-integration-suite/subscribing-to-integration-suite'
     ];
     const externalLinks = await page.locator('a[href^="https:"]').all();
-    assert.equal(externalLinks.length, 3);
+    assert.equal(externalLinks.length, 4);
+    assert((await page.locator('#integration-trial').innerText()).includes('Each consultant uses their own trial tenant.'));
+    assert((await page.locator('.sftp-cell').innerText()).includes('security material in your own trial tenant'));
+    assert(!(await page.content()).includes('tsp-lac-extension-suite-nvk68dqy'));
     for (const link of externalLinks) {
       const href = await link.getAttribute('href');
       assert(destinations.includes(href));
@@ -152,7 +156,7 @@ const pass = name => { results.push(name); console.log(`PASS ${name}`); };
       assert.equal(await popup.evaluate(() => window.opener), null);
       await popup.close();
     }
-    pass('GitHub and Integration Suite links: exact supplied destinations, working new tabs, no credentials, no opener access');
+    pass('GitHub, personal SAP BTP Trial and SAP setup guide links: working new tabs; shared demo URL removed; credential alias scoped to personal tenant');
 
     const brokenLabels = await page.evaluate(() => [...document.querySelectorAll('main input, main textarea')].filter(input => !input.labels?.length && !input.getAttribute('aria-label')).map(input => input.id || input.name));
     assert.deepEqual(brokenLabels, []);
