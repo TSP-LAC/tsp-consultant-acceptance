@@ -17,13 +17,13 @@ Facilitator mode: http://localhost:8080/?facilitator=true.
 - `index.html`: semantic page, feedback form and facilitator template.
 - `styles.css`: responsive layout, focus states and print styles.
 - `app.js`: single-source functional specification, copy/download actions and local drafts.
-- `favicon.svg`: local text-only TSP favicon.
+- `logo.png`: supplied TSP logo for the header and browser icon.
 
 Deploy those four files together to any static host. No build, dependencies, database or application backend is needed. This page loads no remote assets, analytics or tracking. External destinations open in a new tab.
 
 ### GitHub Pages
 
-`.github/workflows/pages.yml` deploys automatically when changes are pushed to `main`. In the standalone repository, select **Settings → Pages → Source → GitHub Actions**. The workflow publishes only `index.html`, `styles.css`, `app.js` and `favicon.svg`; development checks and screenshots are excluded from the website artifact.
+`.github/workflows/pages.yml` deploys automatically when changes are pushed to `main`. In the standalone repository, select **Settings → Pages → Source → GitHub Actions**. The workflow publishes only `index.html`, `styles.css`, `app.js` and `logo.png`; development checks and screenshots are excluded from the website artifact.
 
 All site asset paths are relative, so the page works under a GitHub Pages repository path. Add `?facilitator=true` to the published URL for facilitator mode. Deployment does not change the SAP framework or project template repositories.
 
