@@ -247,7 +247,7 @@ function answer(data, key) {
 
 function feedbackMarkdown() {
   const data = new FormData(document.querySelector("#feedback-form"));
-  return ["# TSP Consultant Acceptance Test — Feedback", "", "Exercise: Employee Anniversary Integration", "", "## 1. From 1 to 5, how clear was it at every moment what you needed to do next?", "", `Rating: ${data.get("clarity") ? `${data.get("clarity")} / 5` : "Not answered"}`, "", "## 2. At any point did you need to understand how the framework worked internally in order to continue?", "", answer(data, "internal"), "", `Explanation: ${answer(data, "internal_comment")}`, "", "## 3. Was there any approval, question or instruction that you did not understand?", "", answer(data, "unclear"), "", "## 4. Did the process feel like useful control or unnecessary bureaucracy? Where?", "", answer(data, "control"), "", "## 5. If you received a real customer requirement tomorrow, would you feel comfortable starting it from this template without assistance?", "", answer(data, "confidence"), "", "## 6. When missing functional information appeared, was it clear:", "", "- what was missing", "- why it blocked progress", "- what you needed to answer", "", `Rating: ${data.get("missing") ? `${data.get("missing")} / 5` : "Not answered"}`, "", `Comment: ${answer(data, "missing_comment")}`, "", "## Anything else?", "", answer(data, "anything"), ""].join("\n");
+  return ["# TSP Consultant Acceptance Test — Feedback", "", "Exercise: Employee Anniversary Integration", "", "## 1. From 1 to 5, how clear was it at every moment what you needed to do next?", "", `Rating: ${data.get("clarity") ? `${data.get("clarity")} / 5` : "Not answered"}`, "", "## 2. At any point did you need to understand how the framework worked internally in order to continue?", "", answer(data, "internal"), "", `Explanation: ${answer(data, "internal_comment")}`, "", "## 3. Was there any approval, question or instruction that you did not understand?", "", answer(data, "unclear"), "", "## 4. Did the process feel like useful control or unnecessary bureaucracy? Where?", "", answer(data, "control"), "", "## 5. If you received a real customer requirement tomorrow, would you feel comfortable starting it from this template without assistance?", "", answer(data, "confidence"), "", "## 6. When missing functional information appeared, was it clear:", "", "- what was missing", "- why it blocked progress", "- what you needed to answer", "", `Rating: ${data.get("missing") ? `${data.get("missing")} / 5` : "Not answered"}`, "", `Comment: ${answer(data, "missing_comment")}`, "", "## 7. How many hours did it take you to complete the work using the framework?", "", `Hours: ${answer(data, "actual_hours")}`, "", "## 8. How many hours do you estimate the same work would have taken without the framework?", "", `Estimated hours: ${answer(data, "estimated_hours")}`, "", "## Anything else?", "", answer(data, "anything"), ""].join("\n");
 }
 
 function observationsMarkdown() {
@@ -265,8 +265,12 @@ document.querySelectorAll("[data-copy]").forEach(button => {
   button.addEventListener("click", () => copyText(document.getElementById(button.dataset.copy).textContent, button));
 });
 document.querySelector("#copy-spec").addEventListener("click", event => copyText(specificationMarkdown(), event.currentTarget));
-document.querySelector("#copy-feedback").addEventListener("click", event => copyText(feedbackMarkdown(), event.currentTarget));
-document.querySelector("#download-feedback").addEventListener("click", () => downloadMarkdown(feedbackMarkdown(), "tsp-acceptance-feedback.md"));
+document.querySelector("#copy-feedback").addEventListener("click", event => {
+  if (document.querySelector("#feedback-form").reportValidity()) copyText(feedbackMarkdown(), event.currentTarget);
+});
+document.querySelector("#download-feedback").addEventListener("click", () => {
+  if (document.querySelector("#feedback-form").reportValidity()) downloadMarkdown(feedbackMarkdown(), "tsp-acceptance-feedback.md");
+});
 document.querySelector("#close-copy-dialog").addEventListener("click", () => document.querySelector("#copy-dialog").close());
 
 if (new URLSearchParams(window.location.search).get("facilitator") === "true") {

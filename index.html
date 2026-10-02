@@ -8,8 +8,8 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
   <title>Employee Anniversary Integration · TSP Acceptance Test</title>
   <link rel="icon" href="favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=2">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=3">
+  <script src="app.js?v=3" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -147,6 +147,8 @@ code .</code></pre><button type="button" class="copy-button" data-copy="clone-co
           <div class="feedback-question"><label class="question-label" for="control"><span>4.</span> Did the process feel like useful control or unnecessary bureaucracy? Where?</label><textarea id="control" name="control" rows="3" placeholder="Tell us where the process helped or added friction."></textarea></div>
           <fieldset class="feedback-question"><legend><span>5.</span> If you received a real customer requirement tomorrow, would you feel comfortable starting it from this template without assistance?</legend><div class="choice-group"><label class="choice"><input type="radio" name="confidence" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="confidence" value="Probably"><span>Probably</span></label><label class="choice"><input type="radio" name="confidence" value="Not sure"><span>Not sure</span></label><label class="choice"><input type="radio" name="confidence" value="Probably not"><span>Probably not</span></label><label class="choice"><input type="radio" name="confidence" value="No"><span>No</span></label></div></fieldset>
           <fieldset class="feedback-question"><legend><span>6.</span> When missing functional information appeared, was it clear:</legend><ul class="feedback-subpoints"><li>what was missing</li><li>why it blocked progress</li><li>what you needed to answer</li></ul><div class="choice-group rating" data-rating="missing"></div><p class="rating-caption">1 · Not clear <span>5 · Very clear</span></p><label class="input-label" for="missing-comment">Comment <span>(optional)</span></label><textarea id="missing-comment" name="missing_comment" rows="3"></textarea></fieldset>
+          <div class="feedback-question"><label class="question-label" for="actual-hours"><span>7.</span> How many hours did it take you to complete the work using the framework?</label><input class="hours-input" id="actual-hours" name="actual_hours" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 1.5" aria-describedby="actual-hours-help"><p class="small-text hours-help" id="actual-hours-help">Hours. You can enter decimals, for example 1.5.</p></div>
+          <div class="feedback-question"><label class="question-label" for="estimated-hours"><span>8.</span> How many hours do you estimate the same work would have taken without the framework?</label><input class="hours-input" id="estimated-hours" name="estimated_hours" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 8" aria-describedby="estimated-hours-help"><p class="small-text hours-help" id="estimated-hours-help">Estimated hours. You can enter decimals.</p></div>
           <div class="feedback-question"><label class="question-label" for="anything">Anything else? <span class="optional">(optional)</span></label><textarea id="anything" name="anything" rows="3"></textarea></div>
           <div class="action-row"><button type="button" class="button button-primary" id="copy-feedback">Copy Feedback</button><button type="button" class="button button-secondary" id="download-feedback">Download Feedback</button></div>
         </form>
