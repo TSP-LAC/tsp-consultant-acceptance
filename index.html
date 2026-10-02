@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The starting point for TSP consultants participating in the framework acceptance test.">
+  <meta name="color-scheme" content="light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Employee Anniversary Integration · TSP Acceptance Test</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#main" aria-label="TSP acceptance test home"><span class="wordmark">TSP<span class="brand-dot">.</span></span><span class="brand-description">SAP AI-Assisted<br>Development Framework</span></a>
+      <span class="badge">Consultant Acceptance Test</span>
+    </div>
+  </header>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <nav aria-label="On this page">
+        <p class="nav-label">YOUR FIRST EXERCISE</p>
+        <a href="#prepare"><span>01</span> Before you start</a>
+        <a href="#environment"><span>02</span> Demo environment</a>
+        <a href="#project"><span>03</span> Create your project</a>
+        <a href="#start"><span>04</span> Start</a>
+        <a href="#assignment"><span>05</span> Your assignment</a>
+        <a href="#provide-spec"><span>06</span> Provide the spec</a>
+        <a href="#questions"><span>07</span> Open questions</a>
+        <a href="#rules"><span>08</span> Three rules</a>
+        <a href="#done"><span>09</span> When you're done</a>
+        <a href="#feedback"><span>10</span> Feedback</a>
+      </nav>
+      <p class="sidebar-note">A starting point.<br>The agent guides the work.</p>
+    </aside>
+    <main id="main">
+      <div class="hero">
+        <p class="eyebrow">TSP CONSULTANT ACCEPTANCE TEST · 01</p>
+        <h1>Employee Anniversary<br>Integration</h1>
+        <p class="hero-subtitle">Your first end-to-end development using the TSP Spec-Driven AI-Assisted SAP Development Framework.</p>
+        <p class="hero-support">You do not need to learn the framework before starting.<br>Follow the instructions below and let the AI agent guide you through the process.</p>
+        <span class="time-label">Estimated time <span aria-hidden="true">·</span> 45–60 minutes</span>
+      </div>
+
+      <section id="prepare" class="section">
+        <div class="section-heading"><span class="section-number">01</span><h2>Before you start</h2></div>
+        <p>You do not need previous knowledge of the framework.</p>
+        <p>Before beginning, make sure you have:</p>
+        <ul class="checklist">
+          <li>Access to the TSP-LAC GitHub organization</li>
+          <li>Git installed and authenticated</li>
+          <li>VS Code installed</li>
+          <li>Python 3 available</li>
+          <li>Access to your AI coding agent in VS Code</li>
+          <li>Access to TSP SAP demo system IX1</li>
+          <li>Access to TSP SAP Integration Suite</li>
+        </ul>
+        <div class="code-block"><pre><code id="environment-commands">git --version
+python3 --version</code></pre><button type="button" class="copy-button" data-copy="environment-commands" aria-label="Copy environment check commands">Copy</button></div>
+        <div class="note">If you have an environment/access problem, ask the facilitator.<br>If you have a framework/process question, ask the AI agent first.</div>
+      </section>
+
+      <section id="environment" class="section">
+        <div class="section-heading"><span class="section-number">02</span><h2>Your demo environment</h2></div>
+        <div class="environment-grid">
+          <div class="environment-cell"><p class="eyebrow">SAP</p><h3>IX1</h3><p>TSP SAP Development Demo System</p><span class="small-badge">DEMO / NON-PRODUCTION</span></div>
+          <div class="environment-cell"><p class="eyebrow">INTEGRATION</p><h3>SAP Integration Suite</h3><p>Your demo integration workspace.</p><a class="button button-secondary" href="https://tsp-lac-extension-suite-nvk68dqy.integrationsuite.cfapps.eu10-003.hana.ondemand.com/shell/design" target="_blank" rel="noopener noreferrer">Open Integration Suite <span aria-hidden="true">↗</span></a></div>
+          <div class="environment-cell sftp-cell"><p class="eyebrow">SFTP</p><dl class="environment-details"><div><dt>SFTP Host</dt><dd>us-east-1.sftpcloud.io</dd></div><div><dt>SFTP Folder</dt><dd><code>/incoming</code></dd></div><div><dt>CPI Credential Alias</dt><dd><code>SFTPDEMO_GREBOREDO</code></dd></div></dl><p class="small-text">The alias identifies SAP Integration Suite security material.</p></div>
+        </div>
+        <p class="safety-note">Do not enter, store or commit passwords or secrets in the project repository.</p>
+      </section>
+
+      <section id="project" class="section">
+        <div class="section-heading"><span class="section-number">03</span><h2>Create your project</h2></div>
+        <ol class="steps">
+          <li><h3>Open the TSP project template.</h3><a class="repository-link" href="https://github.com/TSP-LAC/tsp-sap-development-template" target="_blank" rel="noopener noreferrer">github.com/TSP-LAC/tsp-sap-development-template</a><a class="button button-primary" href="https://github.com/TSP-LAC/tsp-sap-development-template" target="_blank" rel="noopener noreferrer">Open Project Template <span aria-hidden="true">↗</span></a></li>
+          <li><h3>Create your own repository.</h3><p>Use <strong>Use this template → Create a new repository</strong>.</p><p class="small-text">Suggested repository name</p><div class="code-block"><pre><code id="repository-name">framework-test-anniversary-&lt;your-name&gt;</code></pre><button type="button" class="copy-button" data-copy="repository-name" aria-label="Copy suggested repository name">Copy</button></div><p>Visibility: <strong>Private</strong>. Each consultant must create their own repository.</p></li>
+          <li><h3>Clone the repository and open it in VS Code.</h3><p>Replace the placeholders with your repository URL and folder name.</p><div class="code-block"><pre><code id="clone-commands">git clone &lt;your-repository-url&gt;
+cd &lt;your-repository&gt;
+code .</code></pre><button type="button" class="copy-button" data-copy="clone-commands" aria-label="Copy clone and open commands">Copy</button></div></li>
+        </ol>
+      </section>
+
+      <section id="start" class="section start-section">
+        <div class="section-heading"><span class="section-number">04</span><h2>Start</h2></div>
+        <p>Open your AI coding agent inside VS Code.</p>
+        <p>Give it only this instruction:</p>
+        <div class="prompt-card main-prompt"><code id="start-prompt">Start a new project.</code><button type="button" class="button button-primary" data-copy="start-prompt">Copy</button></div>
+        <p><strong>That's it.</strong></p>
+        <p>You do not need to know which framework phase comes next.<br>Answer the agent's questions and follow its instructions.</p>
+        <p>If at any point you are unsure what to do next, ask:</p>
+        <div class="prompt-card"><code id="next-prompt">What should I do next?</code><button type="button" class="copy-button" data-copy="next-prompt" aria-label="Copy next action prompt">Copy</button></div>
+      </section>
+
+      <section id="assignment" class="section">
+        <div class="section-heading"><span class="section-number">05</span><h2>Your assignment</h2></div>
+        <h3 class="assignment-title">Employee Anniversary Recognition Feed</h3>
+        <p>TSP requires a simple outbound integration that sends employees reaching a relevant service anniversary to a fictional external provider called Employee Recognition Provider.</p>
+        <p>This is a framework demonstration. <strong>Only fictional employee data may be used.</strong> No real employee or production data may be accessed.</p>
+        <article id="functional-spec" class="spec-card" aria-label="Complete Functional Specification"></article>
+        <noscript><p class="note">Enable JavaScript to display the Functional Specification and use the copy and feedback tools.</p></noscript>
+      </section>
+
+      <section id="provide-spec" class="section">
+        <div class="section-heading"><span class="section-number">06</span><h2>When the agent asks for the Functional Specification</h2></div>
+        <p>Copy the complete Functional Specification and provide it to the agent.</p>
+        <button type="button" class="button button-primary" id="copy-spec">Copy Functional Specification</button>
+        <p class="small-text">Includes the test data, open items and functional clarification rule.</p>
+      </section>
+
+      <section id="questions" class="section">
+        <div class="section-heading"><span class="section-number">07</span><h2>What if the agent asks you a question?</h2></div>
+        <div class="question-grid">
+          <div class="question-card"><p class="eyebrow">FUNCTIONAL QUESTION</p><blockquote>“What anniversary rule should apply?”<br>“What is the minimum number of years?”</blockquote><p>For this demo, you are also acting as the Functional Owner.</p><p>Invent a reasonable business answer and provide it to the agent.</p><p><strong>Do not ask the facilitator for the answer.</strong></p></div>
+          <div class="question-card"><p class="eyebrow">TECHNICAL QUESTION</p><blockquote>“Should this be implemented in ABAP or CPI?”<br>“Where should the CSV be created?”<br>“What integration pattern should be used?”</blockquote><p>Do not invent this as a business requirement.</p><p>Ask the agent to resolve it through the technical engineering process.</p><p class="small-text">Suggested response</p><div class="prompt-card stacked-prompt"><code id="technical-prompt">This is a technical design decision. Please evaluate it through the framework and recommend the appropriate solution.</code><button type="button" class="copy-button" data-copy="technical-prompt" aria-label="Copy technical design response">Copy response</button></div></div>
+        </div>
+      </section>
+
+      <section id="rules" class="section">
+        <div class="section-heading"><span class="section-number">08</span><h2>Three rules</h2></div>
+        <div class="rules-grid">
+          <div class="rule-card"><span class="rule-number">01</span><h3>Follow the agent.</h3><p>Do not try to navigate the framework manually.</p></div>
+          <div class="rule-card"><span class="rule-number">02</span><h3>Ask before guessing.</h3><p>If you don't know what the framework expects next, ask:</p><div class="rule-prompt"><code id="rules-next-prompt">What should I do next?</code><button type="button" class="copy-button" data-copy="rules-next-prompt" aria-label="Copy next action prompt from exercise rules">Copy</button></div></div>
+          <div class="rule-card"><span class="rule-number">03</span><h3>Don't clean up the result.</h3><p>When the exercise finishes, do not delete, rename or reorganize generated framework artifacts.</p><p>We want to review the project exactly as it finished.</p></div>
+        </div>
+        <p class="safety-note">Never commit passwords, private keys, tokens, productive employee data or other secrets.</p>
+      </section>
+
+      <section id="done" class="section">
+        <div class="section-heading"><span class="section-number">09</span><h2>When are you done?</h2></div>
+        <p>Do not decide manually that the exercise is complete.</p>
+        <p>Continue until the framework itself indicates that the authorized development scope is complete.</p>
+        <p class="note">No productive deployment is required.</p>
+      </section>
+
+      <section id="feedback" class="section">
+        <div class="section-heading"><span class="section-number">10</span><h2>Before you leave</h2></div>
+        <p>Please answer these questions immediately after completing the exercise.</p>
+        <p class="small-text" id="feedback-storage-note">Answers are saved only in this browser on this device. Copy or download your feedback afterward; nothing is sent to an external service. Do not include secrets or real employee data.</p>
+        <form id="feedback-form" aria-describedby="feedback-storage-note">
+          <fieldset class="feedback-question"><legend><span>1.</span> From 1 to 5, how clear was it at every moment what you needed to do next?</legend><div class="choice-group rating" data-rating="clarity"></div><p class="rating-caption">1 · Not clear <span>5 · Very clear</span></p></fieldset>
+          <fieldset class="feedback-question"><legend><span>2.</span> At any point did you need to understand how the framework worked internally in order to continue?</legend><div class="choice-group"><label class="choice"><input type="radio" name="internal" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="internal" value="No"><span>No</span></label></div><label class="input-label" for="internal-comment">Explanation <span>(optional)</span></label><textarea id="internal-comment" name="internal_comment" rows="3"></textarea></fieldset>
+          <div class="feedback-question"><label class="question-label" for="unclear"><span>3.</span> Was there any approval, question or instruction that you did not understand?</label><textarea id="unclear" name="unclear" rows="3" placeholder="Describe what was unclear."></textarea></div>
+          <div class="feedback-question"><label class="question-label" for="control"><span>4.</span> Did the process feel like useful control or unnecessary bureaucracy? Where?</label><textarea id="control" name="control" rows="3" placeholder="Tell us where the process helped or added friction."></textarea></div>
+          <fieldset class="feedback-question"><legend><span>5.</span> If you received a real customer requirement tomorrow, would you feel comfortable starting it from this template without assistance?</legend><div class="choice-group"><label class="choice"><input type="radio" name="confidence" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="confidence" value="Probably"><span>Probably</span></label><label class="choice"><input type="radio" name="confidence" value="Not sure"><span>Not sure</span></label><label class="choice"><input type="radio" name="confidence" value="Probably not"><span>Probably not</span></label><label class="choice"><input type="radio" name="confidence" value="No"><span>No</span></label></div></fieldset>
+          <fieldset class="feedback-question"><legend><span>6.</span> When missing functional information appeared, was it clear:</legend><ul class="feedback-subpoints"><li>what was missing</li><li>why it blocked progress</li><li>what you needed to answer</li></ul><div class="choice-group rating" data-rating="missing"></div><p class="rating-caption">1 · Not clear <span>5 · Very clear</span></p><label class="input-label" for="missing-comment">Comment <span>(optional)</span></label><textarea id="missing-comment" name="missing_comment" rows="3"></textarea></fieldset>
+          <div class="feedback-question"><label class="question-label" for="anything">Anything else? <span class="optional">(optional)</span></label><textarea id="anything" name="anything" rows="3"></textarea></div>
+          <div class="action-row"><button type="button" class="button button-primary" id="copy-feedback">Copy Feedback</button><button type="button" class="button button-secondary" id="download-feedback">Download Feedback</button></div>
+        </form>
+      </section>
+      <div id="facilitator-container"></div>
+      <footer class="page-footer"><span>TSP · Internal engineering exercise</span><span>Demo environment only</span></footer>
+    </main>
+  </div>
+  <div id="status" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+  <dialog id="copy-dialog" aria-labelledby="copy-dialog-title"><h2 id="copy-dialog-title">Copy your text</h2><p>Automatic copying is unavailable in this browser. Select the text below and use your browser's Copy command.</p><label for="manual-copy">Text to copy</label><textarea id="manual-copy" rows="12" readonly></textarea><button type="button" class="button button-primary" id="close-copy-dialog">Done</button></dialog>
+  <template id="facilitator-template">
+    <section id="facilitator" class="section facilitator-section">
+      <p class="eyebrow">FACILITATOR MODE</p><h2>Facilitator observations</h2>
+      <p class="small-text" id="facilitator-storage-note">Observations are saved only in this browser. Copy or download them for review.</p>
+      <form id="facilitator-form" aria-describedby="facilitator-storage-note">
+        <div class="facilitator-fields"><div><label for="consultant">Consultant</label><input id="consultant" name="consultant" type="text" autocomplete="off"></div><div><label for="start-time">Start time</label><input id="start-time" name="start_time" type="time"></div><div><label for="end-time">End time</label><input id="end-time" name="end_time" type="time"></div><div><label for="duration">Approximate duration</label><input id="duration" name="duration" type="text" placeholder="e.g. 52 minutes"></div><div><label for="interventions">Number of facilitator interventions</label><input id="interventions" name="interventions" type="number" min="0" step="1"></div></div>
+        <fieldset class="observation-checks"><legend>Observations</legend><label><input type="checkbox" name="initialization" value="Initialization clear"> Initialization clear</label><label><input type="checkbox" name="ingestion" value="Functional source ingestion clear"> Functional source ingestion clear</label><label><input type="checkbox" name="open_items" value="Open functional items correctly identified"> Open functional items correctly identified</label><label><input type="checkbox" name="boundary" value="Functional vs Technical boundary respected"> Functional vs Technical boundary respected</label><label><input type="checkbox" name="actions" value="Next actions understandable"> Next actions understandable</label><label><input type="checkbox" name="approvals" value="Approval instructions understandable"> Approval instructions understandable</label><label><input type="checkbox" name="build" value="Build instructions understandable"> Build instructions understandable</label><label><input type="checkbox" name="cpi" value="CPI validation understandable"> CPI validation understandable</label><label><input type="checkbox" name="document" value="Final technical document produced"> Final technical document produced</label><label><input type="checkbox" name="completion" value="Completion state understandable"> Completion state understandable</label></fieldset>
+        <label for="friction">Friction points / timestamps</label><textarea id="friction" name="friction" rows="7" placeholder="10:08 — consultant unsure where to place source&#10;10:18 — approval instruction unclear&#10;10:41 — CPI import step required assistance"></textarea>
+        <div class="action-row"><button type="button" class="button button-primary" id="copy-observations">Copy Observations</button><button type="button" class="button button-secondary" id="download-observations">Download Observations</button></div>
+      </form>
+    </section>
+  </template>
+</body>
+</html>
