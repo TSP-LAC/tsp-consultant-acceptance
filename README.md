@@ -17,15 +17,15 @@ Facilitator mode: http://localhost:8080/?facilitator=true.
 - `index.html`: semantic page, feedback form and facilitator template.
 - `styles.css`: responsive layout, focus states and print styles.
 - `app.js`: single-source functional specification, copy/download actions and local drafts.
-- `logo-header.svg`: display wrapper for the supplied TSP mark, rendering its black background transparently.
-- `favicon.svg`: browser icon using the same mark on white.
-- `logo.png`: unmodified original supplied logo, retained as the source asset.
+- `TSP Blue - PNG.png`: supplied transparent blue logo used directly in the header.
+- `TSP White - PNG.png`: supplied transparent white variant, available for dark backgrounds.
+- `favicon.svg`: browser icon embedding the supplied blue mark without filters.
 
-Deploy `index.html`, `styles.css`, `app.js`, `logo-header.svg` and `favicon.svg` together to any static host. The SVG wrappers embed the original logo, so they need no extra image request. No build, dependencies, database or application backend is needed. This page loads no remote assets, analytics or tracking. External destinations open in a new tab.
+Deploy `index.html`, `styles.css`, `app.js`, `favicon.svg` and both supplied PNG logos together to any static host. The original PNGs are preserved without image processing or color changes. No build, dependencies, database or application backend is needed. This page loads no remote assets, analytics or tracking. External destinations open in a new tab.
 
 ### GitHub Pages
 
-`.github/workflows/pages.yml` deploys automatically when changes are pushed to `main`. In the standalone repository, select **Settings → Pages → Source → GitHub Actions**. The workflow publishes only `index.html`, `styles.css`, `app.js`, `logo-header.svg` and `favicon.svg`; development checks and screenshots are excluded from the website artifact.
+`.github/workflows/pages.yml` deploys automatically when changes are pushed to `main`. In the standalone repository, select **Settings → Pages → Source → GitHub Actions**. The workflow publishes only `index.html`, `styles.css`, `app.js`, `favicon.svg` and both supplied PNG logos; development checks, screenshots and older logo assets are excluded from the website artifact.
 
 All site asset paths are relative, so the page works under a GitHub Pages repository path. Add `?facilitator=true` to the published URL for facilitator mode. Deployment does not change the SAP framework or project template repositories.
 
