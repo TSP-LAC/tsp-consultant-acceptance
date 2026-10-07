@@ -376,10 +376,11 @@ function initRepositoryName() {
     input.setAttribute("aria-invalid", "true");
   }
   function update() {
-    const username = input.value.trim();
+    // TSP username: local part of the corporate email address, lowercase.
+    const username = input.value.trim().split("@")[0].toLowerCase();
     status.classList.remove("is-error", "is-ok");
     input.removeAttribute("aria-invalid");
-    if (!username) {
+    if (!input.value.trim()) {
       idOutput.textContent = idPlaceholder;
       nameOutput.textContent = namePlaceholder;
       status.innerHTML = pattern;
@@ -387,7 +388,7 @@ function initRepositoryName() {
     }
     const solutionId = SOLUTION_PREFIX + username;
     if (!/^[A-Za-z0-9]/.test(username) || !IDENTIFIER.test(solutionId)) {
-      reject("A TSP username uses letters, digits, dots, underscores or hyphens only, with no spaces and no trailing dot. Check it with the facilitator.");
+      reject("Use the part of your TSP email address before the @: letters, digits, dots, underscores or hyphens only, with no spaces and no trailing dot. Check it with the facilitator.");
       return;
     }
     const name = repositoryName(solutionId);

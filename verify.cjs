@@ -121,7 +121,12 @@ async function scrollToId(page, id, offset = 60) {
       pageNames[username] = await page.locator('#repo-name').textContent();
       assert.equal(pageNames[username], `TSP_ACC-001-${username}_Employee-Anniversary-Recognition-Feed`);
     }
-    for (const bad of ['g reboredo', 'greboredo.', '.greboredo', '-greboredo', 'gre/boredo', 'josé', 'A'.repeat(60)]) {
+    assert(projectText.includes('not a general TSP Solution ID convention'));
+    for (const [typed, expected] of [['GReboredo', 'greboredo'], ['lprado@tsp.tech', 'lprado'], ['  Maria.Lopez@tsp.tech ', 'maria.lopez']]) {
+      await page.locator('#username-input').fill(typed);
+      assert.equal(await page.locator('#solution-id').textContent(), `ACC-001-${expected}`, typed);
+    }
+    for (const bad of ['g reboredo', 'greboredo.', '.greboredo', '-greboredo', 'gre/boredo', 'josé', '@tsp.tech', 'a'.repeat(60)]) {
       await page.locator('#username-input').fill(bad);
       assert.equal(await page.locator('#solution-id').textContent(), 'ACC-001-<TSP-USERNAME>', bad);
       assert.equal(await page.locator('#repo-name').textContent(), 'TSP_<SOLUTION-ID>_Employee-Anniversary-Recognition-Feed', bad);

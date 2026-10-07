@@ -14,7 +14,7 @@ Feedback (step 12) and facilitator observations record setup and exercise metric
 - The tutorial teaches environment, tools, mental model, exercise context and responsibilities. The Framework teaches process, next action, governance and lifecycle. The page never explains gates, approval phrases, state files or the expected architecture, and never resolves the two intentional functional open items.
 - The Functional Specification (`specification` in `app.js`) is pinned by the frozen acceptance harness. Its clipboard export must stay byte-identical (sha256 `76e87f00…dafef`); `verify.cjs` enforces this.
 - **Human Acceptance Template.** Projects are created from the private template `TSP-LAC/tsp-sap-development-template-acceptance`, not the production template. It contains the unmodified distributable template (`dist/tsp-sap-development-template/`) of Framework Human Acceptance Candidate `427a101df08b8555a8fac06e29a5aef2a241f727`, plus `ACCEPTANCE-PROVENANCE.md` (metadata only). Consultants never see branch or SHA mechanics.
-- **Solution ID.** For this acceptance every consultant uses `ACC-001-<TSP username>`. Repository names follow the Framework's Solution Identity Contract `<CLIENT>_<SOLUTION-ID>_<SHORT-DESCRIPTION>`; the page builds `TSP_ACC-001-<username>_Employee-Anniversary-Recognition-Feed` with the same validation as the Framework helper.
+- **Solution ID.** For this acceptance every consultant uses `ACC-001-<tsp-username>`, where the TSP username is the local part of their corporate TSP email address (before the @), lowercase. This isolates acceptance projects and is not a general Framework Solution ID convention. Repository names follow the Framework's Solution Identity Contract `<CLIENT>_<SOLUTION-ID>_<SHORT-DESCRIPTION>`; the page builds `TSP_ACC-001-<username>_Employee-Anniversary-Recognition-Feed` with the same validation as the Framework helper.
 - **Python bootstrap.** Part A installs exactly the packages in the candidate's `requirements.txt` (`PyYAML>=6.0,<7`, `openpyxl>=3.1,<4`, `python-docx>=1.2,<2`) before the measured exercise starts.
 - **Secrets and infrastructure.** IX1 URL and client are shown as facilitator-provided values and never published. The SFTP credential alias is `SFTPDEMO_TSP`, created by each consultant in their own isolated BTP trial tenant. Passwords, SFTP credentials and other secrets never appear on the page or in the repository.
 
@@ -34,6 +34,7 @@ Open http://localhost:8080/. Facilitator mode: http://localhost:8080/?facilitato
 - `app.js`: single-source Functional Specification, copy/download actions, Windows/macOS switch, setup ticks, progress navigation, repository-name builder and local drafts.
 - `TSP Blue - PNG.png` / `TSP White - PNG.png`: supplied transparent logos (blue in the header, white on the Part B band).
 - `favicon.svg`: browser icon embedding the supplied blue mark.
+- `how-the-workflow-works.svg`: process diagram shown in step 02, exported from `diagrams/how-the-workflow-works.drawio` (source only, not deployed).
 
 Deploy `index.html`, `styles.css`, `app.js`, `favicon.svg`, `how-the-workflow-works.svg` and both PNG logos together to any static host. No build, dependencies, database or backend. The page loads no remote assets, analytics or tracking; a strict Content Security Policy forbids inline script and style. External destinations open in a new tab.
 
