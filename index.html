@@ -3,156 +3,613 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The starting point for TSP consultants participating in the framework acceptance test.">
+  <meta name="description" content="Guided onboarding and acceptance exercise for TSP consultants: set up VS Code, Claude Code and ABAP FS, then complete your first TSP Framework development.">
   <meta name="color-scheme" content="light">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>Employee Anniversary Integration · TSP Acceptance Test</title>
+  <title>Your First TSP Development · Consultant Acceptance</title>
   <link rel="icon" href="favicon.svg?v=5" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=4">
-  <script src="app.js?v=3" defer></script>
+  <link rel="stylesheet" href="styles.css?v=6">
+  <script src="app.js?v=4" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="#main" aria-label="TSP acceptance test home"><img class="brand-logo" src="TSP%20Blue%20-%20PNG.png" alt="TSP — The Silicon Partners" width="1008" height="394"><span class="brand-description">SAP AI-Assisted<br>Development Framework</span></a>
-      <span class="badge">Consultant Acceptance Test</span>
+      <a class="brand" href="#welcome" aria-label="TSP consultant acceptance home"><img class="brand-logo" src="TSP%20Blue%20-%20PNG.png" alt="TSP — The Silicon Partners" width="1008" height="394"><span class="brand-description">SAP AI-Assisted<br>Development Framework</span></a>
+      <span class="badge">Consultant Acceptance</span>
     </div>
   </header>
+
+  <details class="mobile-progress" id="mobile-progress">
+    <summary><span class="mobile-progress-part" id="mobile-part">Get ready</span><span class="mobile-progress-step" id="mobile-step">01 Welcome</span><span class="mobile-progress-toggle" aria-hidden="true">Steps</span></summary>
+    <div class="mobile-progress-panel" id="mobile-nav-slot"></div>
+  </details>
+
   <div class="page-shell">
     <aside class="sidebar">
-      <nav aria-label="On this page">
-        <p class="nav-label">YOUR FIRST EXERCISE</p>
-        <a href="#prepare"><span>01</span> Before you start</a>
-        <a href="#environment"><span>02</span> Demo environment</a>
-        <a href="#project"><span>03</span> Create your project</a>
-        <a href="#start"><span>04</span> Start</a>
-        <a href="#assignment"><span>05</span> Your assignment</a>
-        <a href="#provide-spec"><span>06</span> Provide the spec</a>
-        <a href="#questions"><span>07</span> Open questions</a>
-        <a href="#rules"><span>08</span> Three rules</a>
-        <a href="#done"><span>09</span> When you're done</a>
-        <a href="#feedback"><span>10</span> Feedback</a>
+      <nav aria-label="Guide progress" id="guide-nav">
+        <p class="nav-label">GET READY <span>Do this once</span></p>
+        <a href="#welcome" data-step="welcome"><span class="nav-state" aria-hidden="true"></span><span class="nav-num">01</span> Welcome</a>
+        <a href="#workflow" data-step="workflow"><span class="nav-state" aria-hidden="true"></span><span class="nav-num">02</span> How the workflow works</a>
+        <a href="#install" data-step="install"><span class="nav-state" aria-hidden="true"></span><span class="nav-num">03</span> Install your tools</a>
+        <a href="#connect-sap" data-step="connect-sap"><span class="nav-state" aria-hidden="true"></span><span class="nav-num">04</span> Connect to SAP</a>
+        <a href="#connect-claude" data-step="connect-claude"><span class="nav-state" aria-hidden="true"></span><span class="nav-num">05</span> Connect Claude to SAP</a>
+        <a href="#ready" data-step="ready"><span class="nav-state" aria-hidden="true"></span><span class="nav-num">06</span> Ready check</a>
+        <p class="nav-label">THE EXERCISE <span>Measured</span></p>
+        <a href="#mission" data-step="mission"><span class="nav-state" aria-hidden="true"></span><span class="nav-num">07</span> Your mission</a>
+        <a href="#project" data-step="project"><span class="nav-state" aria-hidden="true"></span><span class="nav-num">08</span> Create your project</a>
+        <a href="#start" data-step="start"><span class="nav-state" aria-hidden="true"></span><span class="nav-num">09</span> Start the Framework</a>
+        <a href="#work" data-step="work"><span class="nav-state" aria-hidden="true"></span><span class="nav-num">10</span> Work with Claude</a>
+        <a href="#finish" data-step="finish"><span class="nav-state" aria-hidden="true"></span><span class="nav-num">11</span> Complete the development</a>
+        <p class="nav-label">FEEDBACK</p>
+        <a href="#feedback" data-step="feedback"><span class="nav-state" aria-hidden="true"></span><span class="nav-num">12</span> Tell us how it went</a>
+        <a href="#help" data-step="help" class="nav-help"><span class="nav-state" aria-hidden="true"></span><span class="nav-num">?</span> Troubleshooting</a>
       </nav>
-      <p class="sidebar-note">A starting point.<br>The agent guides the work.</p>
+      <div class="os-switch" role="group" aria-label="Show instructions for">
+        <span class="os-switch-label">Instructions for</span>
+        <button type="button" data-os-choice="win" aria-pressed="true">Windows</button>
+        <button type="button" data-os-choice="mac" aria-pressed="false">macOS</button>
+      </div>
+      <p class="sidebar-note">Setup ticks are saved in this browser only.<br>Exercise progress is tracked by the Framework, not by this page.</p>
     </aside>
+
     <main id="main">
-      <div class="hero">
-        <p class="eyebrow">TSP CONSULTANT ACCEPTANCE TEST · 01</p>
-        <h1>Employee Anniversary<br>Integration</h1>
-        <p class="hero-subtitle">Your first end-to-end development using the TSP Spec-Driven AI-Assisted SAP Development Framework.</p>
-        <p class="hero-support">You do not need to learn the framework before starting.<br>Follow the instructions below and let the AI agent guide you through the process.</p>
-        <span class="time-label">Estimated time <span aria-hidden="true">·</span> 45–60 minutes</span>
+      <!-- ============================== GET READY ============================== -->
+      <section id="welcome" class="hero" aria-labelledby="welcome-title">
+        <p class="eyebrow"><span class="section-number">01</span> WELCOME</p>
+        <h1 id="welcome-title">Your SAP expertise,<br>a new way of working.</h1>
+        <p class="hero-subtitle">You already know how to build SAP solutions. This exercise does not teach ABAP or CPI. It teaches the new TSP engineering workflow.</p>
+        <ul class="hero-roles" aria-label="The new workflow in four parts">
+          <li><strong>VS Code</strong> becomes your engineering workspace.</li>
+          <li><strong>Claude Code</strong> works with you as an AI engineering agent.</li>
+          <li><strong>ABAP FS</strong> connects that workspace to SAP.</li>
+          <li><strong>The TSP Framework</strong> controls the development lifecycle.</li>
+        </ul>
+        <p class="hero-support"><strong>You stay responsible for technical decisions and approvals.</strong> Claude helps you analyse, investigate, implement, validate and document.<br>No previous experience with VS Code, Claude Code, Git or MCP is needed. This guide starts from zero.</p>
+
+        <div class="acts" aria-label="The two parts of this guide">
+          <a class="act act-setup" href="#install">
+            <span class="act-label">PART A · GET READY</span>
+            <span class="act-title">Workstation setup</span>
+            <span class="act-text">Install the tools, connect to SAP and prove each connection works. <strong>Do this once.</strong> Not part of the measured exercise.</span>
+            <span class="act-meta">Steps 01–06</span>
+          </a>
+          <a class="act act-exercise" href="#mission">
+            <span class="act-label">PART B · THE EXERCISE</span>
+            <span class="act-title">Framework acceptance</span>
+            <span class="act-text">Turn a functional requirement into a designed, implemented, tested and documented SAP solution with Claude and the Framework.</span>
+            <span class="act-meta">Steps 07–11 · this is what we measure</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="workflow" class="section" aria-labelledby="workflow-title">
+        <div class="section-heading"><span class="section-number">02</span><h2 id="workflow-title">How the new workflow works</h2></div>
+        <p class="lead">Four tools work together. You direct them. Every part of the exercise follows the same working cycle.</p>
+
+        <figure class="process" aria-labelledby="process-caption">
+          <img src="how-the-workflow-works.svg?v=1" width="936" height="1009" loading="lazy" alt="Process diagram with four lanes: You, Claude Code, where the work lives, and the TSP Framework. The numbered steps are listed below the diagram.">
+          <figcaption id="process-caption">One working cycle. It repeats until the TSP Framework shows that the authorized development scope is complete. <a href="how-the-workflow-works.svg" target="_blank" rel="noopener">Open the diagram full size</a></figcaption>
+        </figure>
+
+        <h3 class="subhead">The cycle, step by step</h3>
+        <ol class="process-steps">
+          <li><span class="process-who process-who-you">You</span><p><strong>Give Claude an instruction.</strong> At the start: <code>Start a new project.</code> Whenever you are unsure: <code>What should I do next?</code></p></li>
+          <li><span class="process-who">Claude Code</span><p><strong>Reads the Framework instructions and the project context.</strong></p></li>
+          <li><span class="process-who">TSP Framework</span><p><strong>Determines the current state and the next required action.</strong> You never need to work this out from the files yourself.</p></li>
+          <li><span class="process-who">Claude Code</span><p><strong>Carries out that action:</strong> investigates, proposes, creates or changes artifacts and code. It reaches SAP IX1 only through ABAP FS, with your own SAP user and authorizations. Before it changes files or runs commands it asks you, and <strong>you allow or deny each request</strong>.</p></li>
+          <li><span class="process-who process-who-you">You</span><p><strong>Review what Claude brings you:</strong> a question, a functional gap, a technical recommendation or an approval request. If you do not agree, challenge it and ask why.</p></li>
+          <li><span class="process-who process-who-you">You</span><p><strong>Answer, decide or approve,</strong> using your SAP judgment and the wording the Framework shows you.</p></li>
+          <li><span class="process-who">TSP Framework</span><p><strong>Records the decision, evidence and traceability</strong> in your project repository, versioned in Git.</p></li>
+          <li><span class="process-who">TSP Framework</span><p><strong>Checks whether the authorized scope is complete.</strong> If not, the cycle continues from step 3.</p></li>
+        </ol>
+
+        <div class="process-facts">
+          <p><strong>SAP Integration Suite</strong> is your own SAP BTP trial. You use it directly in the browser, only if your solution needs it. Claude and ABAP FS do not reach it.</p>
+          <p><strong>Git / GitHub</strong> stores the engineering repository and its history. It does <strong>not</strong> replace SAP transports.</p>
+          <p><strong>You stay responsible</strong> for technical decisions and approvals. Claude helps you analyse, investigate, implement, validate and document.</p>
+        </div>
+      </section>
+
+      <section id="install" class="section" aria-labelledby="install-title">
+        <div class="section-heading"><span class="section-number">03</span><h2 id="install-title">Install your tools</h2></div>
+        <div class="stage-intro">
+          <div><p class="eyebrow">WHAT YOU ARE DOING</p><p>Installing six things on your computer, the Framework's Python packages, and confirming GitHub access.</p></div>
+          <div><p class="eyebrow">WHY</p><p>Everything in the exercise runs inside VS Code on your machine.</p></div>
+        </div>
+        <div class="os-switch os-switch-inline" role="group" aria-label="Show instructions for">
+          <span class="os-switch-label">Show instructions for</span>
+          <button type="button" data-os-choice="win" aria-pressed="true">Windows</button>
+          <button type="button" data-os-choice="mac" aria-pressed="false">macOS</button>
+        </div>
+
+        <article class="tool-card" id="tool-vscode">
+          <header class="tool-head"><span class="tool-letter">A</span><div><h3>VS Code</h3><p>Your engineering workspace: project files, Claude and SAP in one window.</p></div></header>
+          <ol class="actions">
+            <li>Download VS Code from <a href="https://code.visualstudio.com/download" target="_blank" rel="noopener noreferrer">code.visualstudio.com/download <span aria-hidden="true">↗</span></a>.</li>
+            <li class="os-win">Run the <strong>User Installer</strong>. It needs no administrator rights and adds the <code>code</code> command to your PATH.</li>
+            <li class="os-mac">Open the downloaded file and drag <strong>Visual Studio Code</strong> into <strong>Applications</strong>.</li>
+            <li>Open VS Code.</li>
+          </ol>
+          <div class="learn-box">
+            <p class="eyebrow">ONE SHORTCUT TO LEARN</p>
+            <p><strong>Command Palette is VS Code's command search.</strong> Every command in this guide is run from it: open it, start typing the command name, press Enter.</p>
+            <dl class="shortcut-list"><div><dt>Windows</dt><dd><kbd>Ctrl+Shift+P</kbd></dd></div><div><dt>macOS</dt><dd><kbd>Cmd+Shift+P</kbd></dd></div></dl>
+            <p class="small-text">Extensions are installed from the Extensions view: <kbd class="os-win">Ctrl+Shift+X</kbd><kbd class="os-mac">Cmd+Shift+X</kbd>.</p>
+          </div>
+          <p class="os-mac small-text">macOS only: open Command Palette and run <strong>Shell Command: Install 'code' command in PATH</strong>. This lets you open folders from Terminal.</p>
+          <p class="expect"><span>Expected result</span> VS Code opens with a Welcome tab.</p>
+        </article>
+
+        <article class="tool-card" id="tool-git">
+          <header class="tool-head"><span class="tool-letter">B</span><div><h3>Git</h3><p>Versions the engineering repository: specifications, technical design, traceability, evidence and Framework state. Git does <strong>not</strong> replace SAP transports.</p></div></header>
+          <ol class="actions">
+            <li class="os-win">Install <strong>Git for Windows</strong> from <a href="https://git-scm.com/install/windows" target="_blank" rel="noopener noreferrer">git-scm.com/install/windows <span aria-hidden="true">↗</span></a>. The default options are fine; they include Git Credential Manager for GitHub sign-in.</li>
+            <li class="os-mac">Open <strong>Terminal</strong> and run <code>xcode-select --install</code>, or follow <a href="https://git-scm.com/install/mac" target="_blank" rel="noopener noreferrer">git-scm.com/install/mac <span aria-hidden="true">↗</span></a>.</li>
+            <li>Close and reopen VS Code so it finds Git.</li>
+          </ol>
+        </article>
+
+        <article class="tool-card" id="tool-python">
+          <header class="tool-head"><span class="tool-letter">C</span><div><h3>Python 3.11 or later</h3><p>The Framework's validation and tracking tools are Python scripts that Claude runs in your project.</p></div></header>
+          <ol class="actions">
+            <li class="os-win">Install Python from <a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer">python.org/downloads <span aria-hidden="true">↗</span></a> using the <strong>Python Install Manager</strong>. If it offers to add Python to your PATH, accept.</li>
+            <li class="os-mac">Install the macOS package from <a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer">python.org/downloads <span aria-hidden="true">↗</span></a>.</li>
+            <li>Choose the current 3.x release. Python 3.11 is the minimum we support for this exercise.</li>
+          </ol>
+          <p class="small-text">After the version check below, you install the three Python packages the Framework needs.</p>
+        </article>
+
+        <div class="verify-card">
+          <p class="eyebrow">CHECK GIT AND PYTHON</p>
+          <p>In VS Code, open <strong>Terminal → New Terminal</strong> and run:</p>
+          <div class="code-block os-win"><pre><code id="check-win">git --version
+python --version</code></pre><button type="button" class="copy-button" data-copy="check-win" aria-label="Copy Windows version check commands">Copy</button></div>
+          <div class="code-block os-mac"><pre><code id="check-mac">git --version
+python3 --version</code></pre><button type="button" class="copy-button" data-copy="check-mac" aria-label="Copy macOS version check commands">Copy</button></div>
+          <p class="expect"><span>Expected result</span> Two version lines, for example <code>git version 2.x</code> and <code>Python 3.1x.x</code>.</p>
+          <details class="trouble"><summary>If it doesn't work</summary><ul><li><strong>"not recognized" / "command not found":</strong> close every VS Code window and reopen it, then retry. Installers only update the PATH for newly opened programs.</li><li class="os-win"><strong>Windows opens the Microsoft Store when you type <code>python</code>:</strong> finish the Python Install Manager setup from python.org, then reopen VS Code.</li><li><strong>Python older than 3.11:</strong> install a current version.</li><li>Still stuck? This is a local installation problem: contact the facilitator.</li></ul></details>
+        </div>
+
+        <div class="verify-card" id="python-packages">
+          <p class="eyebrow">INSTALL THE FRAMEWORK'S PYTHON PACKAGES</p>
+          <p>In the same terminal, run this once. These are exactly the packages listed in the Framework's <code>requirements.txt</code>.</p>
+          <div class="code-block os-win"><pre><code id="pip-win">python -m pip install "PyYAML&gt;=6.0,&lt;7" "openpyxl&gt;=3.1,&lt;4" "python-docx&gt;=1.2,&lt;2"</code></pre><button type="button" class="copy-button" data-copy="pip-win" aria-label="Copy Windows package install command">Copy</button></div>
+          <div class="code-block os-mac"><pre><code id="pip-mac">python3 -m pip install "PyYAML&gt;=6.0,&lt;7" "openpyxl&gt;=3.1,&lt;4" "python-docx&gt;=1.2,&lt;2"</code></pre><button type="button" class="copy-button" data-copy="pip-mac" aria-label="Copy macOS package install command">Copy</button></div>
+          <p class="expect"><span>Expected result</span> The output ends with <code>Successfully installed …</code> or <code>Requirement already satisfied</code>.</p>
+          <details class="trouble"><summary>If it doesn't work</summary><ul><li><strong>"No module named pip":</strong> your Python installation is incomplete. Reinstall Python from python.org.</li><li class="os-mac"><strong>"externally-managed-environment":</strong> this Python came from Homebrew. Install Python from python.org and use that one.</li><li>Any other error is a local installation problem: contact the facilitator.</li></ul></details>
+        </div>
+
+        <article class="tool-card tool-card-claude" id="tool-claude">
+          <header class="tool-head"><span class="tool-letter">D</span><div><h3>Claude Code</h3><p>The AI engineering agent you work with inside VS Code. It is the official AI for this pilot.</p></div></header>
+          <ol class="actions">
+            <li>Open the Extensions view (<kbd class="os-win">Ctrl+Shift+X</kbd><kbd class="os-mac">Cmd+Shift+X</kbd>), search <strong>Claude Code</strong> and install <strong>Claude Code for VS Code</strong> by <strong>Anthropic</strong>.</li>
+            <li>Open the Claude Code panel: click <strong>✻ Claude Code</strong> in the status bar at the bottom right, or the spark icon at the top right of an open file.</li>
+            <li>Click <strong>Sign in</strong> and complete authorization in your browser with the Claude account TSP assigned to you.</li>
+            <li>Click the <strong>mode indicator</strong> below the prompt box and choose <strong>Manual</strong>. <strong>Manual mode is required for this acceptance:</strong> Claude asks permission before it edits files or runs commands, and you review each action before approving it. Check the mode each time you start a new conversation.</li>
+          </ol>
+          <p class="expect"><span>Expected result</span> A chat panel with a prompt box. Type <code>hello</code> and Claude answers.</p>
+          <details class="trouble"><summary>If it doesn't work</summary><ul><li><strong>Extension not found after install:</strong> Command Palette → <strong>Developer: Reload Window</strong>.</li><li><strong>Sign-in fails or says no access:</strong> Claude Code needs a paid Claude plan or a Claude Console account. Contact the facilitator for account access.</li><li>A standalone Claude terminal tool exists, but you do <strong>not</strong> need it for this exercise.</li></ul></details>
+        </article>
+
+        <article class="tool-card" id="tool-abapfs">
+          <header class="tool-head"><span class="tool-letter">E</span><div><h3>ABAP FS</h3><p>The bridge between VS Code and SAP ABAP. Full name: <strong>ABAP remote filesystem</strong>.</p></div></header>
+          <ol class="actions">
+            <li>In the Extensions view, search <strong>ABAP remote filesystem</strong> and install the extension by <strong>Marcello Urbani</strong> (<code>murbani.vscode-abap-remote-fs</code>).</li>
+            <li>Restart VS Code.</li>
+          </ol>
+          <p class="expect"><span>Expected result</span> Typing <code>ABAP FS</code> in Command Palette lists ABAP FS commands.</p>
+          <p class="small-text"><a href="https://marcellourbani.github.io/vscode_abap_remote_fs/" target="_blank" rel="noopener noreferrer">ABAP FS documentation <span aria-hidden="true">↗</span></a></p>
+        </article>
+
+        <article class="tool-card" id="tool-github">
+          <header class="tool-head"><span class="tool-letter">F</span><div><h3>GitHub access</h3><p>Your project repository is created in the TSP-LAC GitHub organization from the Human Acceptance Template.</p></div></header>
+          <ol class="actions">
+            <li>Sign in to <a href="https://github.com/" target="_blank" rel="noopener noreferrer">github.com <span aria-hidden="true">↗</span></a> with the account linked to TSP-LAC.</li>
+            <li>Open the <a href="https://github.com/TSP-LAC/tsp-sap-development-template-acceptance" target="_blank" rel="noopener noreferrer">Human Acceptance Template <span aria-hidden="true">↗</span></a>.</li>
+          </ol>
+          <p class="expect"><span>Expected result</span> You see the template repository and a <strong>Use this template</strong> button. If GitHub shows "404", you do not have access yet: contact the facilitator.</p>
+        </article>
+
+        <fieldset class="section-checks" data-section-checks="install">
+          <legend>Tick what is done</legend>
+          <label><input type="checkbox" data-setup="vscode"> VS Code installed</label>
+          <label><input type="checkbox" data-setup="git"> Git available</label>
+          <label><input type="checkbox" data-setup="python"> Python 3.11+ available</label>
+          <label><input type="checkbox" data-setup="pydeps"> Framework Python packages installed</label>
+          <label><input type="checkbox" data-setup="claude"> Claude Code signed in</label>
+          <label><input type="checkbox" data-setup="abapfs"> ABAP FS installed</label>
+          <label><input type="checkbox" data-setup="github"> GitHub access confirmed</label>
+        </fieldset>
+      </section>
+
+      <section id="connect-sap" class="section" aria-labelledby="connect-sap-title">
+        <div class="section-heading"><span class="section-number">04</span><h2 id="connect-sap-title">Connect to SAP</h2></div>
+        <div class="stage-intro">
+          <div><p class="eyebrow">WHAT YOU ARE DOING</p><p>Connecting ABAP FS in VS Code to SAP IX1 with your own user.</p></div>
+          <div><p class="eyebrow">WHY</p><p>Claude will later reach SAP through this connection. Prove it works on its own first.</p></div>
+        </div>
+
+        <div class="facts-card" id="ix1-facts">
+          <div class="facts-head"><p class="eyebrow">SAP IX1 CONNECTION</p><span class="small-badge">DEMO / NON-PRODUCTION</span></div>
+          <dl class="facts">
+            <div><dt>Connection name</dt><dd><code>IX1-TSP</code></dd></div>
+            <div><dt>SAP URL (ADT)</dt><dd class="facilitator-value">Provided by the facilitator</dd></div>
+            <div><dt>Client</dt><dd class="facilitator-value">Provided by the facilitator</dd></div>
+            <div><dt>Language</dt><dd><code>EN</code></dd></div>
+            <div><dt>Username</dt><dd>Your assigned IX1 user</dd></div>
+            <div><dt>Password</dt><dd>Entered securely when ABAP FS prompts you. Never stored in the repository.</dd></div>
+          </dl>
+        </div>
+
+        <ol class="steps">
+          <li>
+            <h3>Add IX1 to ABAP FS</h3>
+            <p>Command Palette (<kbd class="os-win">Ctrl+Shift+P</kbd><kbd class="os-mac">Cmd+Shift+P</kbd>) → <strong>ABAP FS: Connection Manager</strong>.</p>
+            <p>Click <strong>Add SAP System</strong> (some versions say <strong>Add Connection</strong>) and enter the values above. Leave SSL and advanced options unchanged unless the facilitator tells you otherwise.</p>
+            <p>When asked where to save, choose <strong>User Settings</strong>. Workspace settings would place the connection inside a project folder.</p>
+          </li>
+          <li>
+            <h3>Connect</h3>
+            <p>Command Palette → type <strong>ABAP FS: Connect</strong> and choose <strong>ABAP FS: Connect to an ABAP system</strong>. Pick <code>IX1-TSP</code> and enter your password.</p>
+            <p class="expect"><span>Expected result</span> No error message. The ABAP FS icon in the left Activity Bar shows views such as <strong>Transports</strong> for IX1.</p>
+          </li>
+          <li>
+            <h3>Run a read-only test</h3>
+            <p>Command Palette → type <strong>ABAP FS: Search</strong> and choose <strong>ABAP FS: ABAP Search for object</strong>. Search for this standard SAP class:</p>
+            <div class="code-block"><pre><code id="search-term">CL_ABAP_TYPEDESCR</code></pre><button type="button" class="copy-button" data-copy="search-term" aria-label="Copy SAP test object name">Copy</button></div>
+            <p class="expect"><span>Expected result</span> <code>CL_ABAP_TYPEDESCR</code> appears in the results. This only reads SAP. If you open the class, do not type in it.</p>
+          </li>
+        </ol>
+
+        <div class="checkpoint" id="checkpoint-1" aria-labelledby="checkpoint-1-title">
+          <div class="checkpoint-head"><span class="checkpoint-tag">CHECKPOINT 1</span><h3 id="checkpoint-1-title">VS Code can reach SAP</h3></div>
+          <div class="checkpoint-body">
+            <fieldset class="checkpoint-checks" data-section-checks="connect-sap">
+              <legend class="visually-hidden">Checkpoint 1 items</legend>
+              <label><input type="checkbox" data-setup="abapfs"> ABAP FS installed</label>
+              <label><input type="checkbox" data-setup="ix1"> IX1 connected</label>
+              <label><input type="checkbox" data-setup="search"> SAP object search works</label>
+            </fieldset>
+            <div class="checkpoint-fail">
+              <p><strong>If this fails, it is a VS Code / ABAP FS / SAP connection problem.</strong> Do not continue to Claude yet.</p>
+              <details class="trouble"><summary>Troubleshoot the SAP connection</summary><ul><li><strong>Connection or certificate error:</strong> check the SAP URL and client exactly as the facilitator gave them.</li><li><strong>Logon failed / user locked:</strong> check your IX1 user. Use <strong>ABAP FS: Change Connection Password</strong> to re-enter it.</li><li><strong>Timeout:</strong> you may need the TSP network or VPN. Run <strong>ABAP FS: Show Corporate Network Connection Help</strong>.</li><li><strong>No ABAP FS commands:</strong> the extension is not installed or VS Code was not restarted.</li><li>Still failing? Contact the facilitator with the exact error message.</li></ul></details>
+            </div>
+          </div>
+        </div>
+
+        <article class="tool-card tool-card-cpi" id="integration-trial">
+          <header class="tool-head"><span class="tool-letter">+</span><div><h3>SAP Integration Suite: your own BTP trial</h3><p>The solution may or may not need CPI; that is for you to design. Prepare access now so it never interrupts the exercise. Integration Suite is used in the browser, not through ABAP FS or Claude.</p></div></header>
+          <ol class="actions">
+            <li>Open your SAP BTP trial and confirm Integration Suite with Cloud Integration is enabled. Each consultant uses their own trial tenant.</li>
+            <li>In your trial subaccount: <strong>Services → Instances and Subscriptions → Integration Suite → Go to Application</strong>.</li>
+          </ol>
+          <div class="action-row action-row-tight"><a class="button button-secondary" href="https://cockpit.hanatrial.ondemand.com/trial/" target="_blank" rel="noopener noreferrer">Open SAP BTP Trial <span aria-hidden="true">↗</span></a><a class="button button-quiet" href="https://help.sap.com/docs/integration-suite/sap-integration-suite/subscribing-to-integration-suite" target="_blank" rel="noopener noreferrer">SAP Integration Suite setup guide <span aria-hidden="true">↗</span></a></div>
+          <label class="inline-check"><input type="checkbox" data-setup="cpi"> My Integration Suite tenant opens</label>
+        </article>
+      </section>
+
+      <section id="connect-claude" class="section" aria-labelledby="connect-claude-title">
+        <div class="section-heading"><span class="section-number">05</span><h2 id="connect-claude-title">Connect Claude to SAP</h2></div>
+        <div class="stage-intro">
+          <div><p class="eyebrow">WHAT YOU ARE DOING</p><p>Letting Claude use the SAP tools that ABAP FS provides. <strong>Only start this after Checkpoint 1 passes.</strong></p></div>
+          <div><p class="eyebrow">WHY</p><p><strong>MCP is the bridge that lets Claude use the SAP tools exposed by ABAP FS.</strong> No SAP credentials pass through it; ABAP FS uses your existing connection.</p></div>
+        </div>
+
+        <figure class="stack-figure" aria-labelledby="stack-caption">
+          <ol class="layer-stack">
+            <li class="layer" data-row="1"><span class="layer-name">Claude Code</span><span class="layer-detail">VS Code panel</span></li>
+            <li class="layer-link" data-row="2"><span>MCP · <code>http://localhost:4847/mcp</code></span></li>
+            <li class="layer" data-row="3"><span class="layer-name">ABAP FS MCP server</span><span class="layer-detail">Runs inside VS Code</span></li>
+            <li class="layer" data-row="4"><span class="layer-name">ABAP FS</span><span class="layer-detail">Your IX1 connection</span></li>
+            <li class="layer-link" data-row="5"><span>SAP ADT over HTTPS</span></li>
+            <li class="layer layer-sap" data-row="6"><span class="layer-name">SAP IX1</span><span class="layer-detail">Development demo system</span></li>
+          </ol>
+          <div class="stack-bracket bracket-1" aria-hidden="true"><span>Checkpoint 1</span></div>
+          <div class="stack-bracket bracket-2" aria-hidden="true"><span>Checkpoint 2</span></div>
+          <figcaption id="stack-caption">Checkpoint 1 proved the bottom of the path. Checkpoint 2 proves the whole path from Claude to SAP.</figcaption>
+        </figure>
+
+        <ol class="steps">
+          <li>
+            <h3>Start the ABAP FS MCP server</h3>
+            <p>Command Palette → <strong>ABAP FS: Start MCP Server</strong>.</p>
+            <p class="expect"><span>Expected result</span> A notification confirms the server is running on port 4847.</p>
+            <ul class="mini-facts">
+              <li>The server runs inside VS Code. <strong>VS Code must stay open.</strong></li>
+              <li>It needs an active IX1 connection. After restarting VS Code, run <strong>ABAP FS: Connect to an ABAP system</strong> again.</li>
+              <li>Running the command also makes the server start automatically with VS Code from now on.</li>
+            </ul>
+          </li>
+          <li>
+            <h3>Add the server to Claude Code</h3>
+            <p>In the Claude Code panel, type <code>/mcp</code> and press Enter. In the dialog, add a new server with:</p>
+            <dl class="facts facts-compact">
+              <div><dt>Name</dt><dd><code>abap-fs</code></dd></div>
+              <div><dt>Type</dt><dd>HTTP</dd></div>
+              <div><dt>URL</dt><dd><span class="inline-copy"><code id="mcp-url">http://localhost:4847/mcp</code><button type="button" class="copy-button" data-copy="mcp-url" aria-label="Copy MCP server URL">Copy</button></span></dd></div>
+              <div><dt>Scope</dt><dd><strong>User</strong>, so it is also available in the project you create later</dd></div>
+            </dl>
+            <p class="small-text">Do not add headers, passwords or SAP credentials. If the dialog has no option to add a server, update the Claude Code extension.</p>
+            <details class="optional"><summary>Optional: add it from a terminal instead</summary><p>Only if you have separately installed the standalone Claude Code terminal tool. It saves to the same configuration.</p><div class="code-block"><pre><code id="mcp-cli">claude mcp add --transport http --scope user abap-fs http://localhost:4847/mcp</code></pre><button type="button" class="copy-button" data-copy="mcp-cli" aria-label="Copy optional terminal command">Copy</button></div></details>
+          </li>
+          <li>
+            <h3>Confirm the connection</h3>
+            <p>Start a <strong>new</strong> Claude conversation, type <code>/mcp</code> again.</p>
+            <p class="expect"><span>Expected result</span> <code>abap-fs</code> shows <strong>Connected</strong>.</p>
+          </li>
+          <li>
+            <h3>Ask Claude to read SAP</h3>
+            <p>Send exactly this prompt. It is a <strong>read-only</strong> test.</p>
+            <div class="prompt-card stacked-prompt"><code id="sap-test-prompt">Using the ABAP FS tools, search SAP IX1 for the class CL_ABAP_TYPEDESCR and tell me what you find. This is a read-only connection test: do not create, modify, activate or transport anything.</code><button type="button" class="copy-button" data-copy="sap-test-prompt" aria-label="Copy read-only SAP test prompt">Copy prompt</button></div>
+            <p>Claude asks permission to use an ABAP FS search tool. Read the request and allow it. <strong>Deny any request to create, change or activate an object.</strong></p>
+            <p class="expect"><span>Expected result</span> Claude reports that it found <code>CL_ABAP_TYPEDESCR</code> in IX1.</p>
+          </li>
+        </ol>
+
+        <div class="checkpoint" id="checkpoint-2" aria-labelledby="checkpoint-2-title">
+          <div class="checkpoint-head"><span class="checkpoint-tag">CHECKPOINT 2</span><h3 id="checkpoint-2-title">Claude can reach SAP</h3></div>
+          <div class="checkpoint-body">
+            <fieldset class="checkpoint-checks" data-section-checks="connect-claude">
+              <legend class="visually-hidden">Checkpoint 2 items</legend>
+              <label><input type="checkbox" data-setup="claude"> Claude Code running</label>
+              <label><input type="checkbox" data-setup="mcp"> ABAP FS MCP connected</label>
+              <label><input type="checkbox" data-setup="invoke"> Claude can invoke ABAP FS</label>
+              <label><input type="checkbox" data-setup="read"> Claude can read IX1</label>
+            </fieldset>
+            <div class="checkpoint-fail">
+              <p><strong>If this fails, find the layer:</strong></p>
+              <dl class="diagnosis">
+                <div><dt>ABAP FS cannot access IX1</dt><dd>SAP connection problem. Go back to Checkpoint 1.</dd></div>
+                <div><dt>ABAP FS works, but Claude cannot see its tools</dt><dd>MCP problem. Check that the server is started and <code>/mcp</code> shows <code>abap-fs</code> Connected.</dd></div>
+                <div><dt>Claude reads SAP, but the Framework cannot proceed</dt><dd>Framework or project problem. That belongs to the exercise, not to setup.</dd></div>
+              </dl>
+              <details class="trouble"><summary>Troubleshoot MCP</summary><ul><li><strong><code>abap-fs</code> shows Failed:</strong> run <strong>ABAP FS: Start MCP Server</strong>, then use <strong>Reconnect</strong> in <code>/mcp</code> or start a new conversation.</li><li><strong>Port 4847 already in use:</strong> another program uses it. Contact the facilitator.</li><li><strong>401 Unauthorized:</strong> an MCP API key is set in ABAP FS settings. Contact the facilitator.</li><li><strong>Tools time out:</strong> the IX1 connection was lost. Reconnect ABAP FS.</li><li>Server errors are listed in VS Code's Output panel under <strong>ABAP FS</strong>.</li></ul></details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ready" class="section ready-section" aria-labelledby="ready-title">
+        <div class="section-heading"><span class="section-number">06</span><h2 id="ready-title">Your workstation is ready</h2></div>
+        <p>Tick everything that is true. Anything unticked is a setup task: finish it, or contact the facilitator, before you start the exercise.</p>
+        <fieldset class="ready-list" data-section-checks="ready">
+          <legend class="visually-hidden">Ready check</legend>
+          <label><input type="checkbox" data-setup="vscode"> VS Code installed</label>
+          <label><input type="checkbox" data-setup="git"> Git available</label>
+          <label><input type="checkbox" data-setup="python"> Python 3.11+ available</label>
+          <label><input type="checkbox" data-setup="pydeps"> Framework Python packages installed</label>
+          <label><input type="checkbox" data-setup="claude"> Claude Code signed in</label>
+          <label><input type="checkbox" data-setup="abapfs"> ABAP FS installed</label>
+          <label><input type="checkbox" data-setup="ix1"> IX1 connected</label>
+          <label><input type="checkbox" data-setup="mcp"> ABAP FS MCP running</label>
+          <label><input type="checkbox" data-setup="read"> Claude can read SAP</label>
+          <label><input type="checkbox" data-setup="github"> GitHub access confirmed</label>
+          <label><input type="checkbox" data-setup="cpi"> Integration Suite trial opens</label>
+        </fieldset>
+        <p class="ready-status" id="ready-status" aria-live="polite"></p>
+        <div class="ready-cta">
+          <a class="button button-primary button-large" href="#mission">Start your first TSP development <span aria-hidden="true">→</span></a>
+          <p class="small-text">Setup ends here. <strong>Note the time now</strong>: the measured exercise starts with the next step.</p>
+          <button type="button" class="link-button" id="reset-setup">Clear setup ticks</button>
+        </div>
+      </section>
+
+      <!-- ============================== THE EXERCISE ============================== -->
+      <div class="part-band" role="presentation">
+        <img src="TSP%20White%20-%20PNG.png" alt="" width="1008" height="394">
+        <div><p class="part-band-label">PART B · THE EXERCISE</p><p class="part-band-title">From functional requirement to SAP solution</p></div>
       </div>
 
-      <section id="prepare" class="section">
-        <div class="section-heading"><span class="section-number">01</span><h2>Before you start</h2></div>
-        <p>You do not need previous knowledge of the framework.</p>
-        <p>Before beginning, make sure you have:</p>
-        <ul class="checklist">
-          <li>Access to the TSP-LAC GitHub organization</li>
-          <li>Git installed and authenticated</li>
-          <li>VS Code installed</li>
-          <li>Python 3 available</li>
-          <li>Access to your AI coding agent in VS Code</li>
-          <li>Access to TSP SAP demo system IX1</li>
-          <li>Your own SAP BTP trial account with SAP Integration Suite and Cloud Integration enabled</li>
-        </ul>
-        <div class="code-block"><pre><code id="environment-commands">git --version
-python3 --version</code></pre><button type="button" class="copy-button" data-copy="environment-commands" aria-label="Copy environment check commands">Copy</button></div>
-        <div class="note">If you have an environment/access problem, ask the facilitator.<br>If you have a framework/process question, ask the AI agent first.</div>
-      </section>
-
-      <section id="environment" class="section">
-        <div class="section-heading"><span class="section-number">02</span><h2>Your demo environment</h2></div>
-        <div class="environment-grid">
-          <div class="environment-cell"><p class="eyebrow">SAP</p><h3>IX1</h3><p>TSP SAP Development Demo System</p><span class="small-badge">DEMO / NON-PRODUCTION</span></div>
-          <div class="environment-cell" id="integration-trial"><p class="eyebrow">INTEGRATION</p><h3>SAP Integration Suite</h3><p>Use your own SAP BTP trial account with Cloud Integration enabled. Each consultant uses their own trial tenant.</p><a class="button button-secondary" href="https://cockpit.hanatrial.ondemand.com/trial/" target="_blank" rel="noopener noreferrer">Open SAP BTP Trial <span aria-hidden="true">↗</span></a><p class="small-text">In your trial subaccount, open <strong>Services → Instances and Subscriptions → Integration Suite → Go to Application</strong>.</p><a class="small-text" href="https://help.sap.com/docs/integration-suite/sap-integration-suite/subscribing-to-integration-suite" target="_blank" rel="noopener noreferrer">SAP Integration Suite setup guide <span aria-hidden="true">↗</span></a></div>
-          <div class="environment-cell sftp-cell"><p class="eyebrow">SFTP</p><dl class="environment-details"><div><dt>SFTP Host</dt><dd>us-east-1.sftpcloud.io</dd></div><div><dt>SFTP Folder</dt><dd><code>/incoming</code></dd></div><div><dt>CPI Credential Alias</dt><dd><code>SFTPDEMO_GREBOREDO</code></dd></div></dl><p class="small-text">The alias refers to security material in your own trial tenant. If it is not configured yet, ask the facilitator for the test SFTP credentials and set it up there.</p></div>
+      <section id="mission" class="section" aria-labelledby="mission-title">
+        <div class="section-heading"><span class="section-number">07</span><h2 id="mission-title">Your mission</h2></div>
+        <div class="mission-story">
+          <p>Imagine you received a new customer requirement today. The Functional Consultant hands you a specification for an <strong>Employee Anniversary Recognition Feed</strong>. You are the Technical Consultant.</p>
+          <p>You do not yet know whether the best solution is ABAP, CPI or a combination. <strong>That ambiguity is intentional.</strong></p>
+          <p>Your job is not to follow a technical recipe. It is to use the TSP Framework to turn this requirement into a designed, implemented, tested and documented SAP solution.</p>
         </div>
-        <p class="safety-note">Do not enter, store or commit passwords or secrets in the project repository.</p>
-      </section>
 
-      <section id="project" class="section">
-        <div class="section-heading"><span class="section-number">03</span><h2>Create your project</h2></div>
-        <ol class="steps">
-          <li><h3>Open the TSP project template.</h3><a class="repository-link" href="https://github.com/TSP-LAC/tsp-sap-development-template" target="_blank" rel="noopener noreferrer">github.com/TSP-LAC/tsp-sap-development-template</a><a class="button button-primary" href="https://github.com/TSP-LAC/tsp-sap-development-template" target="_blank" rel="noopener noreferrer">Open Project Template <span aria-hidden="true">↗</span></a></li>
-          <li><h3>Create your own repository.</h3><p>Use <strong>Use this template → Create a new repository</strong>.</p><p class="small-text">Suggested repository name</p><div class="code-block"><pre><code id="repository-name">framework-test-anniversary-&lt;your-name&gt;</code></pre><button type="button" class="copy-button" data-copy="repository-name" aria-label="Copy suggested repository name">Copy</button></div><p>Visibility: <strong>Private</strong>. Each consultant must create their own repository.</p></li>
-          <li><h3>Clone the repository and open it in VS Code.</h3><p>Replace the placeholders with your repository URL and folder name.</p><div class="code-block"><pre><code id="clone-commands">git clone &lt;your-repository-url&gt;
-cd &lt;your-repository&gt;
-code .</code></pre><button type="button" class="copy-button" data-copy="clone-commands" aria-label="Copy clone and open commands">Copy</button></div></li>
-        </ol>
-      </section>
+        <figure class="journey" aria-labelledby="journey-caption">
+          <ol>
+            <li>Functional specification</li>
+            <li>Framework analysis</li>
+            <li class="journey-optional">Functional clarifications, if needed</li>
+            <li>Technical discovery and design</li>
+            <li class="journey-human">Your review and approval</li>
+            <li>Implementation</li>
+            <li>Validation and testing</li>
+            <li>Technical documentation</li>
+            <li class="journey-end">Complete</li>
+          </ol>
+          <figcaption id="journey-caption">The general shape of the journey. Claude and the Framework tell you each concrete step.</figcaption>
+        </figure>
 
-      <section id="start" class="section start-section">
-        <div class="section-heading"><span class="section-number">04</span><h2>Start</h2></div>
-        <p>Open your AI coding agent inside VS Code.</p>
-        <p>Give it only this instruction:</p>
-        <div class="prompt-card main-prompt"><code id="start-prompt">Start a new project.</code><button type="button" class="button button-primary" data-copy="start-prompt">Copy</button></div>
-        <p><strong>That's it.</strong></p>
-        <p>You do not need to know which framework phase comes next.<br>Answer the agent's questions and follow its instructions.</p>
-        <p>If at any point you are unsure what to do next, ask:</p>
-        <div class="prompt-card"><code id="next-prompt">What should I do next?</code><button type="button" class="copy-button" data-copy="next-prompt" aria-label="Copy next action prompt">Copy</button></div>
-      </section>
-
-      <section id="assignment" class="section">
-        <div class="section-heading"><span class="section-number">05</span><h2>Your assignment</h2></div>
-        <h3 class="assignment-title">Employee Anniversary Recognition Feed</h3>
+        <h3 class="subhead">The requirement</h3>
         <p>TSP requires a simple outbound integration that sends employees reaching a relevant service anniversary to a fictional external provider called Employee Recognition Provider.</p>
-        <p>This is a framework demonstration. <strong>Only fictional employee data may be used.</strong> No real employee or production data may be accessed.</p>
+        <p class="safety-note"><strong>Only fictional employee data may be used.</strong> No real employee or production data may be accessed.</p>
+        <div class="spec-actions"><button type="button" class="button button-primary" id="copy-spec">Copy Functional Specification</button><span class="small-text">You will paste it when Claude asks for the Functional Specification. Includes the test data, open items and clarification rule.</span></div>
         <article id="functional-spec" class="spec-card" aria-label="Complete Functional Specification"></article>
         <noscript><p class="note">Enable JavaScript to display the Functional Specification and use the copy and feedback tools.</p></noscript>
+
+        <h3 class="subhead" id="environment">Your exercise environment</h3>
+        <div class="environment-grid">
+          <div class="environment-cell"><p class="eyebrow">SAP</p><h4>IX1</h4><p>TSP SAP Development Demo System, connected in step 04.</p><span class="small-badge">DEMO / NON-PRODUCTION</span></div>
+          <div class="environment-cell"><p class="eyebrow">INTEGRATION</p><h4>SAP Integration Suite</h4><p>Your own SAP BTP trial tenant, if your solution uses it.</p></div>
+          <div class="environment-cell sftp-cell">
+            <p class="eyebrow">TEST SFTP DESTINATION</p>
+            <div class="sftp-split">
+              <div><p class="split-label">Non-secret configuration</p><dl class="environment-details"><div><dt>SFTP Host</dt><dd>us-east-1.sftpcloud.io</dd></div><div><dt>SFTP Folder</dt><dd><code>/incoming</code></dd></div><div><dt>CPI Credential Alias</dt><dd><code>SFTPDEMO_TSP</code></dd></div></dl></div>
+              <div class="secret-box"><p class="split-label">Facilitator-provided secret</p><p>SFTP username and password. Ask the facilitator if your solution needs them. If you use CPI, store them only as security material under the alias above, in your own isolated trial tenant. Every consultant uses the same alias name in their own tenant.</p></div>
+            </div>
+          </div>
+        </div>
+        <p class="safety-note">Never enter, store or commit passwords or secrets in the project repository.</p>
       </section>
 
-      <section id="provide-spec" class="section">
-        <div class="section-heading"><span class="section-number">06</span><h2>When the agent asks for the Functional Specification</h2></div>
-        <p>Copy the complete Functional Specification and provide it to the agent.</p>
-        <button type="button" class="button button-primary" id="copy-spec">Copy Functional Specification</button>
-        <p class="small-text">Includes the test data, open items and functional clarification rule.</p>
+      <section id="project" class="section" aria-labelledby="project-title">
+        <div class="section-heading"><span class="section-number">08</span><h2 id="project-title">Create your project</h2></div>
+        <div class="stage-intro">
+          <div><p class="eyebrow">WHAT YOU ARE DOING</p><p>Creating the engineering repository for this solution from the Human Acceptance Template.</p></div>
+          <div><p class="eyebrow">WHY</p><p>The repository holds everything the Framework produces: specifications, design, evidence and approvals.</p></div>
+        </div>
+
+        <div class="identity-card" id="identity">
+          <p class="eyebrow">YOUR SOLUTION IDENTITY</p>
+          <p>Every TSP solution has a Client and a Solution ID, and the repository name is built from them. The Framework checks the name, so create it correctly from the start. For this acceptance, your Solution ID is fixed: use exactly the form below and do not create a different one.</p>
+          <dl class="facts">
+            <div><dt>Client</dt><dd><code>TSP</code></dd></div>
+            <div><dt>Solution ID</dt><dd><code>ACC-001-</code><em>your TSP username</em></dd></div>
+            <div><dt>Solution name</dt><dd><code>Employee Anniversary Recognition Feed</code></dd></div>
+          </dl>
+          <label class="input-label" for="username-input">Type your TSP username</label>
+          <input id="username-input" type="text" autocomplete="off" spellcheck="false" placeholder="TSP username" aria-describedby="username-help">
+          <p class="small-text" id="username-help">If you are unsure of your TSP username, ask the facilitator. Nothing you type here leaves this page.</p>
+          <p class="split-label">Your Solution ID</p>
+          <div class="code-block repo-name-block"><pre><code id="solution-id">ACC-001-&lt;TSP-USERNAME&gt;</code></pre><button type="button" class="copy-button" data-copy="solution-id" aria-label="Copy Solution ID">Copy</button></div>
+          <p class="split-label">Your repository name</p>
+          <div class="code-block repo-name-block"><pre><code id="repo-name">TSP_&lt;SOLUTION-ID&gt;_Employee-Anniversary-Recognition-Feed</code></pre><button type="button" class="copy-button" data-copy="repo-name" aria-label="Copy repository name">Copy</button></div>
+          <p class="small-text" id="repo-name-status" aria-live="polite">Pattern: <code>&lt;CLIENT&gt;_&lt;SOLUTION-ID&gt;_&lt;SHORT-DESCRIPTION&gt;</code></p>
+        </div>
+
+        <ol class="steps">
+          <li>
+            <h3>Create the repository from the Human Acceptance Template</h3>
+            <p>Open the template prepared for this acceptance and click <strong>Use this template → Create a new repository</strong>.</p>
+            <a class="button button-primary" href="https://github.com/TSP-LAC/tsp-sap-development-template-acceptance" target="_blank" rel="noopener noreferrer">Open Human Acceptance Template <span aria-hidden="true">↗</span></a>
+            <dl class="facts facts-compact">
+              <div><dt>Owner</dt><dd><code>TSP-LAC</code></dd></div>
+              <div><dt>Repository name</dt><dd>Your repository name from above</dd></div>
+              <div><dt>Visibility</dt><dd><strong>Private</strong></dd></div>
+            </dl>
+            <p>Click <strong>Create repository from template</strong>. Each consultant creates their own repository.</p>
+          </li>
+          <li>
+            <h3>Clone it and open it in VS Code</h3>
+            <p>Command Palette → <strong>Git: Clone</strong> → <strong>Clone from GitHub</strong>. Sign in to GitHub when asked, pick your new repository, choose a local folder and click <strong>Open</strong>.</p>
+            <p>When VS Code asks whether you trust the authors of the folder, choose <strong>Yes</strong>.</p>
+            <details class="optional"><summary>Prefer the terminal?</summary><p>On GitHub, click <strong>Code</strong> and copy the HTTPS URL, then run:</p><div class="code-block"><pre><code id="clone-commands">git clone &lt;your-repository-url&gt;
+cd &lt;your-repository-name&gt;
+code .</code></pre><button type="button" class="copy-button" data-copy="clone-commands" aria-label="Copy clone and open commands">Copy</button></div></details>
+            <p class="expect"><span>Expected result</span> VS Code shows your repository's files, including <code>START-HERE.md</code>.</p>
+            <p class="small-text">VS Code may ask whether to allow automatic tasks in this folder. They open the Framework's status dashboard; allowing them is optional.</p>
+          </li>
+        </ol>
+        <details class="trouble trouble-standalone"><summary>Cannot clone or sign in to GitHub?</summary><ul><li><strong>Repository not listed:</strong> confirm you created it under <code>TSP-LAC</code> and that you are signed in with the right account.</li><li class="os-win"><strong>Authentication prompt loops:</strong> Git Credential Manager (installed with Git for Windows) opens a browser window; complete the sign-in there.</li><li class="os-mac"><strong>Authentication fails in Terminal:</strong> use VS Code's <strong>Git: Clone → Clone from GitHub</strong>, which signs you in through the browser.</li><li>Missing permissions on TSP-LAC: contact the facilitator.</li></ul></details>
       </section>
 
-      <section id="questions" class="section">
-        <div class="section-heading"><span class="section-number">07</span><h2>What if the agent asks you a question?</h2></div>
-        <div class="question-grid">
-          <div class="question-card"><p class="eyebrow">FUNCTIONAL QUESTION</p><blockquote>“What anniversary rule should apply?”<br>“What is the minimum number of years?”</blockquote><p>For this demo, you are also acting as the Functional Owner.</p><p>Invent a reasonable business answer and provide it to the agent.</p><p><strong>Do not ask the facilitator for the answer.</strong></p></div>
-          <div class="question-card"><p class="eyebrow">TECHNICAL QUESTION</p><blockquote>“Should this be implemented in ABAP or CPI?”<br>“Where should the CSV be created?”<br>“What integration pattern should be used?”</blockquote><p>Do not invent this as a business requirement.</p><p>Ask the agent to resolve it through the technical engineering process.</p><p class="small-text">Suggested response</p><div class="prompt-card stacked-prompt"><code id="technical-prompt">This is a technical design decision. Please evaluate it through the framework and recommend the appropriate solution.</code><button type="button" class="copy-button" data-copy="technical-prompt" aria-label="Copy technical design response">Copy response</button></div></div>
+      <section id="start" class="section start-section" aria-labelledby="start-title">
+        <div class="section-heading"><span class="section-number">09</span><h2 id="start-title">Start the Framework</h2></div>
+        <p>In the VS Code window that shows <strong>your repository</strong>, open the Claude Code panel. Check that the mode below the prompt box is <strong>Manual</strong>.</p>
+        <p>Give Claude only this instruction:</p>
+        <div class="prompt-card main-prompt"><code id="start-prompt">Start a new project.</code><button type="button" class="button button-primary" data-copy="start-prompt">Copy</button></div>
+        <p class="start-handover"><strong>From this point forward, the Framework guides you.</strong> You do not need to know which phase comes next, which files to open or what to edit.</p>
+        <p>Whenever you are unsure what to do, ask Claude:</p>
+        <div class="prompt-card"><code id="next-prompt">What should I do next?</code><button type="button" class="copy-button" data-copy="next-prompt" aria-label="Copy next action prompt">Copy</button></div>
+        <p class="small-text">This works because the Framework always knows the project's current state and the next required action. You never need to work it out from the files yourself.</p>
+
+        <div class="known-facts">
+          <p class="eyebrow">FACTS YOU ALREADY KNOW</p>
+          <p>Claude will ask about the project. Answer from these facts; they are your environment, not Framework instructions.</p>
+          <dl class="facts">
+            <div><dt>Client</dt><dd><code>TSP</code></dd></div>
+            <div><dt>Solution ID</dt><dd><code>ACC-001-</code><em>your TSP username</em>, exactly as in your repository name</dd></div>
+            <div><dt>Solution name</dt><dd><code>Employee Anniversary Recognition Feed</code></dd></div>
+            <div><dt>Project roles</dt><dd>For this demo, you act in every project role Claude asks about, including Functional Owner and Technical Lead. Your decisions still need real review.</dd></div>
+            <div><dt>SAP system</dt><dd>IX1, development demo system. No QA or production system.</dd></div>
+            <div><dt>Integration</dt><dd>Your own SAP BTP trial tenant</dd></div>
+            <div><dt>Data</dt><dd>Fictional data only</dd></div>
+            <div><dt>Scope</dt><dd><span class="inline-copy"><code id="scope-statement">Development/demo only. No Production deployment.</code><button type="button" class="copy-button" data-copy="scope-statement" aria-label="Copy scope statement">Copy</button></span></dd></div>
+          </dl>
+          <p>When Claude asks for the Functional Specification, use <a href="#mission">Copy Functional Specification</a> and paste it into the chat.</p>
         </div>
       </section>
 
-      <section id="rules" class="section">
-        <div class="section-heading"><span class="section-number">08</span><h2>Three rules</h2></div>
+      <section id="work" class="section" aria-labelledby="work-title">
+        <div class="section-heading"><span class="section-number">10</span><h2 id="work-title">Work with Claude</h2></div>
+        <div class="judgment">
+          <p class="judgment-title">Claude does not replace your engineering judgment.</p>
+          <div class="judgment-split"><p><span>Claude</span>proposes · investigates · executes</p><p><span>You</span>review · decide · approve</p></div>
+        </div>
+        <p>You will meet four kinds of moments:</p>
+        <div class="moment-grid">
+          <article class="moment"><p class="eyebrow">A · CLAUDE ASKS FOR INFORMATION</p><blockquote>“Who is the Technical Lead?”</blockquote><p><strong>Answer what you know.</strong> If you do not know, say so.</p></article>
+          <article class="moment"><p class="eyebrow">B · CLAUDE FINDS A FUNCTIONAL GAP</p><blockquote>“The specification does not define … Please decide.”</blockquote><p>For this demo you are also the <strong>Functional Owner</strong>. Make a reasonable business decision and give it to Claude.</p><p><strong>Do not ask the facilitator for the answer.</strong></p></article>
+          <article class="moment"><p class="eyebrow">C · A TECHNICAL DECISION</p><blockquote>“I recommend implementing … because …”</blockquote><p><strong>Use your SAP expertise.</strong> Review the recommendation, ask why, challenge it. Do not accept it blindly.</p><p class="small-text">If Claude asks you to decide a technical question as if it were a business requirement, you can reply:</p><div class="prompt-card stacked-prompt"><code id="technical-prompt">This is a technical design decision. Please evaluate it through the framework and recommend the appropriate solution.</code><button type="button" class="copy-button" data-copy="technical-prompt" aria-label="Copy technical design response">Copy response</button></div></article>
+          <article class="moment"><p class="eyebrow">D · CLAUDE ASKS FOR APPROVAL</p><blockquote>“If this is correct, reply: …”</blockquote><p><strong>Read exactly what is being approved.</strong> Approve only if you agree. Use the wording the Framework shows you.</p></article>
+        </div>
+
+        <div class="safety-card" id="permissions">
+          <p class="eyebrow">PERMISSIONS AND SAP SAFETY</p>
+          <ul>
+            <li><strong>Claude asks before it changes files or runs commands.</strong> Read each request. Allow it when it makes sense; deny it when it does not.</li>
+            <li><strong>Manual mode is required.</strong> Do not switch to modes that approve actions for you or skip permission checks.</li>
+            <li><strong>ABAP FS can write to SAP, and changes take effect immediately.</strong> The connection test before the exercise was read-only. During the exercise, SAP objects are created or changed only after the Framework has authorized implementation and you have approved the action.</li>
+            <li>Do not ask Claude to change SAP outside the Framework.</li>
+          </ul>
+        </div>
+
+        <h3 class="subhead">Three rules</h3>
         <div class="rules-grid">
-          <div class="rule-card"><span class="rule-number">01</span><h3>Follow the agent.</h3><p>Do not try to navigate the framework manually.</p></div>
-          <div class="rule-card"><span class="rule-number">02</span><h3>Ask before guessing.</h3><p>If you don't know what the framework expects next, ask:</p><div class="rule-prompt"><code id="rules-next-prompt">What should I do next?</code><button type="button" class="copy-button" data-copy="rules-next-prompt" aria-label="Copy next action prompt from exercise rules">Copy</button></div></div>
-          <div class="rule-card"><span class="rule-number">03</span><h3>Don't clean up the result.</h3><p>When the exercise finishes, do not delete, rename or reorganize generated framework artifacts.</p><p>We want to review the project exactly as it finished.</p></div>
+          <div class="rule-card"><span class="rule-number">01</span><h4>Follow the Framework.</h4><p>Do not navigate lifecycle files or edit them by hand.</p></div>
+          <div class="rule-card"><span class="rule-number">02</span><h4>Ask before guessing.</h4><p>Not sure what comes next? Ask Claude:</p><div class="rule-prompt"><code id="rules-next-prompt">What should I do next?</code><button type="button" class="copy-button" data-copy="rules-next-prompt" aria-label="Copy next action prompt from exercise rules">Copy</button></div></div>
+          <div class="rule-card"><span class="rule-number">03</span><h4>Don't clean up the result.</h4><p>Do not delete, rename or reorganize generated artifacts. We review the project exactly as it finished.</p></div>
         </div>
-        <p class="safety-note">Never commit passwords, private keys, tokens, productive employee data or other secrets.</p>
       </section>
 
-      <section id="done" class="section">
-        <div class="section-heading"><span class="section-number">09</span><h2>When are you done?</h2></div>
-        <p>Do not decide manually that the exercise is complete.</p>
-        <p>Continue until the framework itself indicates that the authorized development scope is complete.</p>
-        <p class="note">No productive deployment is required.</p>
+      <section id="finish" class="section" aria-labelledby="finish-title">
+        <div class="section-heading"><span class="section-number">11</span><h2 id="finish-title">Complete the development</h2></div>
+        <p><strong>Do not decide on your own that the exercise is complete.</strong> Continue until the Framework itself shows that the authorized development scope is complete.</p>
+        <ul class="finish-list">
+          <li>No productive deployment is required.</li>
+          <li>Leave the repository exactly as it finished.</li>
+          <li><strong>Note the time.</strong> Then fill in the feedback below while it is fresh.</li>
+        </ul>
       </section>
 
-      <section id="feedback" class="section">
-        <div class="section-heading"><span class="section-number">10</span><h2>Before you leave</h2></div>
-        <p>Please answer these questions immediately after completing the exercise.</p>
+      <!-- ============================== FEEDBACK ============================== -->
+      <section id="feedback" class="section" aria-labelledby="feedback-title">
+        <div class="section-heading"><span class="section-number">12</span><h2 id="feedback-title">Tell us how it went</h2></div>
+        <p>Setup and the exercise are measured separately. Setup problems are recorded, but they do not count against the Framework.</p>
         <p class="small-text" id="feedback-storage-note">Answers are saved only in this browser on this device. Copy or download your feedback afterward; nothing is sent to an external service. Do not include secrets or real employee data.</p>
         <form id="feedback-form" aria-describedby="feedback-storage-note">
-          <fieldset class="feedback-question"><legend><span>1.</span> From 1 to 5, how clear was it at every moment what you needed to do next?</legend><div class="choice-group rating" data-rating="clarity"></div><p class="rating-caption">1 · Not clear <span>5 · Very clear</span></p></fieldset>
-          <fieldset class="feedback-question"><legend><span>2.</span> At any point did you need to understand how the framework worked internally in order to continue?</legend><div class="choice-group"><label class="choice"><input type="radio" name="internal" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="internal" value="No"><span>No</span></label></div><label class="input-label" for="internal-comment">Explanation <span>(optional)</span></label><textarea id="internal-comment" name="internal_comment" rows="3"></textarea></fieldset>
-          <div class="feedback-question"><label class="question-label" for="unclear"><span>3.</span> Was there any approval, question or instruction that you did not understand?</label><textarea id="unclear" name="unclear" rows="3" placeholder="Describe what was unclear."></textarea></div>
-          <div class="feedback-question"><label class="question-label" for="control"><span>4.</span> Did the process feel like useful control or unnecessary bureaucracy? Where?</label><textarea id="control" name="control" rows="3" placeholder="Tell us where the process helped or added friction."></textarea></div>
-          <fieldset class="feedback-question"><legend><span>5.</span> If you received a real customer requirement tomorrow, would you feel comfortable starting it from this template without assistance?</legend><div class="choice-group"><label class="choice"><input type="radio" name="confidence" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="confidence" value="Probably"><span>Probably</span></label><label class="choice"><input type="radio" name="confidence" value="Not sure"><span>Not sure</span></label><label class="choice"><input type="radio" name="confidence" value="Probably not"><span>Probably not</span></label><label class="choice"><input type="radio" name="confidence" value="No"><span>No</span></label></div></fieldset>
-          <fieldset class="feedback-question"><legend><span>6.</span> When missing functional information appeared, was it clear:</legend><ul class="feedback-subpoints"><li>what was missing</li><li>why it blocked progress</li><li>what you needed to answer</li></ul><div class="choice-group rating" data-rating="missing"></div><p class="rating-caption">1 · Not clear <span>5 · Very clear</span></p><label class="input-label" for="missing-comment">Comment <span>(optional)</span></label><textarea id="missing-comment" name="missing_comment" rows="3"></textarea></fieldset>
-          <div class="feedback-question"><label class="question-label" for="actual-hours"><span>7.</span> How many hours did it take you to complete the work using the framework?</label><input class="hours-input" id="actual-hours" name="actual_hours" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 1.5" aria-describedby="actual-hours-help"><p class="small-text hours-help" id="actual-hours-help">Hours. You can enter decimals, for example 1.5.</p></div>
-          <div class="feedback-question"><label class="question-label" for="estimated-hours"><span>8.</span> How many hours do you estimate the same work would have taken without the framework?</label><input class="hours-input" id="estimated-hours" name="estimated_hours" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 8" aria-describedby="estimated-hours-help"><p class="small-text hours-help" id="estimated-hours-help">Estimated hours. You can enter decimals.</p></div>
+          <div class="feedback-part"><p class="eyebrow">PART A · WORKSTATION SETUP</p></div>
+          <div class="feedback-question"><label class="question-label" for="setup-hours"><span>A1.</span> How many hours did the workstation setup (steps 01–06) take?</label><input class="hours-input" id="setup-hours" name="setup_hours" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 0.75" aria-describedby="setup-hours-help"><p class="small-text hours-help" id="setup-hours-help">Hours. You can enter decimals, for example 0.75.</p></div>
+          <div class="feedback-question"><label class="question-label" for="setup-unclear"><span>A2.</span> Which installation or setup step was unclear, if any?</label><textarea id="setup-unclear" name="setup_unclear" rows="3" placeholder="Name the step and what was unclear."></textarea></div>
+          <fieldset class="feedback-question"><legend><span>A3.</span> Where did you have connection problems?</legend><div class="choice-group choice-group-check"><label class="choice"><input type="checkbox" name="issue_none" value="None"><span>None</span></label><label class="choice"><input type="checkbox" name="issue_sap" value="ABAP FS / IX1"><span>ABAP FS / IX1</span></label><label class="choice"><input type="checkbox" name="issue_mcp" value="MCP (Claude to ABAP FS)"><span>MCP</span></label><label class="choice"><input type="checkbox" name="issue_claude" value="Claude Code sign-in"><span>Claude sign-in</span></label><label class="choice"><input type="checkbox" name="issue_github" value="Git / GitHub"><span>Git / GitHub</span></label><label class="choice"><input type="checkbox" name="issue_cpi" value="Integration Suite trial"><span>Integration Suite</span></label></div><label class="input-label" for="setup-issues-comment">What happened <span>(optional)</span></label><textarea id="setup-issues-comment" name="setup_issues_comment" rows="3"></textarea></fieldset>
+          <div class="feedback-question"><label class="question-label" for="setup-help"><span>A4.</span> How many times did you need the facilitator during setup?</label><input class="hours-input" id="setup-help" name="setup_help" type="number" min="0" step="1" inputmode="numeric" placeholder="e.g. 1"></div>
+
+          <div class="feedback-part"><p class="eyebrow">PART B · FRAMEWORK EXERCISE</p></div>
+          <div class="feedback-question"><label class="question-label" for="actual-hours"><span>B1.</span> How many hours did the exercise (steps 07–11) take using the Framework?</label><input class="hours-input" id="actual-hours" name="actual_hours" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 1.5" aria-describedby="actual-hours-help"><p class="small-text hours-help" id="actual-hours-help">Hours, excluding setup. You can enter decimals, for example 1.5.</p></div>
+          <div class="feedback-question"><label class="question-label" for="estimated-hours"><span>B2.</span> How many hours do you estimate the same work would have taken without the Framework?</label><input class="hours-input" id="estimated-hours" name="estimated_hours" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 8" aria-describedby="estimated-hours-help"><p class="small-text hours-help" id="estimated-hours-help">Estimated hours. You can enter decimals.</p></div>
+          <fieldset class="feedback-question"><legend><span>B3.</span> From 1 to 5, how clear was it at every moment what you needed to do next?</legend><div class="choice-group rating" data-rating="clarity"></div><p class="rating-caption">1 · Not clear <span>5 · Very clear</span></p></fieldset>
+          <fieldset class="feedback-question"><legend><span>B4.</span> At any point did you need to understand how the Framework worked internally in order to continue?</legend><div class="choice-group"><label class="choice"><input type="radio" name="internal" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="internal" value="No"><span>No</span></label></div><label class="input-label" for="internal-comment">Explanation <span>(optional)</span></label><textarea id="internal-comment" name="internal_comment" rows="3"></textarea></fieldset>
+          <div class="feedback-question"><label class="question-label" for="process-help"><span>B5.</span> How many times did you need the facilitator for a Framework or process question?</label><input class="hours-input" id="process-help" name="process_help" type="number" min="0" step="1" inputmode="numeric" placeholder="e.g. 0"></div>
+          <fieldset class="feedback-question"><legend><span>B6.</span> From 1 to 5, how clear were the approvals: what you were approving and why?</legend><div class="choice-group rating" data-rating="approvals"></div><p class="rating-caption">1 · Not clear <span>5 · Very clear</span></p><label class="input-label" for="unclear">Was there any approval, question or instruction that you did not understand? <span>(optional)</span></label><textarea id="unclear" name="unclear" rows="3" placeholder="Describe what was unclear."></textarea></fieldset>
+          <fieldset class="feedback-question"><legend><span>B7.</span> When missing functional information appeared, was it clear:</legend><ul class="feedback-subpoints"><li>what was missing</li><li>why it blocked progress</li><li>what you needed to answer</li></ul><div class="choice-group rating" data-rating="missing"></div><p class="rating-caption">1 · Not clear <span>5 · Very clear</span></p><label class="input-label" for="missing-comment">Comment <span>(optional)</span></label><textarea id="missing-comment" name="missing_comment" rows="3"></textarea></fieldset>
+          <fieldset class="feedback-question"><legend><span>B8.</span> From 1 to 5, did the process feel like useful control or unnecessary bureaucracy?</legend><div class="choice-group rating" data-rating="friction" data-low="Bureaucracy" data-high="Useful control"></div><p class="rating-caption">1 · Bureaucracy <span>5 · Useful control</span></p><label class="input-label" for="control">Where did it help or add friction? <span>(optional)</span></label><textarea id="control" name="control" rows="3" placeholder="Tell us where the process helped or added friction."></textarea></fieldset>
+          <fieldset class="feedback-question"><legend><span>B9.</span> If you received a real customer requirement tomorrow, would you feel comfortable starting it from this template without assistance?</legend><div class="choice-group"><label class="choice"><input type="radio" name="confidence" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="confidence" value="Probably"><span>Probably</span></label><label class="choice"><input type="radio" name="confidence" value="Not sure"><span>Not sure</span></label><label class="choice"><input type="radio" name="confidence" value="Probably not"><span>Probably not</span></label><label class="choice"><input type="radio" name="confidence" value="No"><span>No</span></label></div></fieldset>
           <div class="feedback-question"><label class="question-label" for="anything">Anything else? <span class="optional">(optional)</span></label><textarea id="anything" name="anything" rows="3"></textarea></div>
           <div class="action-row"><button type="button" class="button button-primary" id="copy-feedback">Copy Feedback</button><button type="button" class="button button-secondary" id="download-feedback">Download Feedback</button></div>
         </form>
       </section>
+
+      <section id="help" class="section help-section" aria-labelledby="help-title">
+        <div class="section-heading"><span class="section-number">?</span><h2 id="help-title">Troubleshooting by layer</h2></div>
+        <div class="boundary">
+          <div><p class="eyebrow">FRAMEWORK OR PROCESS QUESTION</p><p>Ask Claude: <code>What should I do next?</code></p></div>
+          <div><p class="eyebrow">INSTALLATION, ACCESS OR CONNECTION FAILURE</p><p>Contact the facilitator.</p></div>
+        </div>
+        <dl class="layer-help">
+          <div><dt><span class="layer-tag">VS CODE</span>Command not found / extension missing</dt><dd>Type the command name in Command Palette exactly as shown. If nothing appears, install the extension and run <strong>Developer: Reload Window</strong>.</dd></div>
+          <div><dt><span class="layer-tag">ABAP FS</span>Cannot connect to IX1</dt><dd>Check URL, client and user against the facilitator's values; check network/VPN. See <a href="#checkpoint-1">Checkpoint 1</a>.</dd></div>
+          <div><dt><span class="layer-tag">MCP</span>Claude cannot see ABAP FS tools</dt><dd>Confirm ABAP FS is connected, run <strong>ABAP FS: Start MCP Server</strong>, then check <code>/mcp</code> in Claude. See <a href="#checkpoint-2">Checkpoint 2</a>.</dd></div>
+          <div><dt><span class="layer-tag">CLAUDE</span>Not signed in / MCP disconnected</dt><dd>Sign in again from the Claude Code panel. Reconnect <code>abap-fs</code> from <code>/mcp</code> or start a new conversation.</dd></div>
+          <div><dt><span class="layer-tag">GIT / GITHUB</span>Cannot clone / authentication</dt><dd>Use <strong>Git: Clone → Clone from GitHub</strong> to sign in through the browser. Missing organization access: facilitator.</dd></div>
+          <div><dt><span class="layer-tag">FRAMEWORK</span>Claude is running but I do not know what to do next</dt><dd>Ask Claude <code>What should I do next?</code> Do not open or edit Framework files by hand, and do not ask the facilitator which phase comes next.</dd></div>
+        </dl>
+        <p class="small-text links-line">Official documentation: <a href="https://code.visualstudio.com/docs" target="_blank" rel="noopener noreferrer">VS Code <span aria-hidden="true">↗</span></a> · <a href="https://code.claude.com/docs/en/vs-code" target="_blank" rel="noopener noreferrer">Claude Code in VS Code <span aria-hidden="true">↗</span></a> · <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener noreferrer">Claude Code MCP <span aria-hidden="true">↗</span></a> · <a href="https://marcellourbani.github.io/vscode_abap_remote_fs/mcp-server/" target="_blank" rel="noopener noreferrer">ABAP FS MCP server <span aria-hidden="true">↗</span></a> · <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template" target="_blank" rel="noopener noreferrer">GitHub templates <span aria-hidden="true">↗</span></a></p>
+      </section>
+
       <div id="facilitator-container"></div>
       <footer class="page-footer"><span>TSP · Internal engineering exercise</span><span>Demo environment only</span></footer>
     </main>
@@ -162,11 +619,23 @@ code .</code></pre><button type="button" class="copy-button" data-copy="clone-co
   <template id="facilitator-template">
     <section id="facilitator" class="section facilitator-section">
       <p class="eyebrow">FACILITATOR MODE</p><h2>Facilitator observations</h2>
+      <div class="facilitator-rules">
+        <div><p class="split-label">You may help with</p><ul><li>Credentials and account access</li><li>IX1 URL, client and user</li><li>Confirming the consultant's TSP username</li><li>GitHub permissions</li><li>Local installation problems</li><li>BTP trial access</li><li>SFTP secret delivery</li></ul></div>
+        <div><p class="split-label">Do not tell the consultant</p><ul><li>Which Framework phase comes next</li><li>Which technical architecture to choose</li><li>How to satisfy a Framework step</li><li>The two intentional functional answers</li></ul><p class="small-text">Asked “What do I do next in the Framework?” Answer: <strong>“Ask Claude: What should I do next?”</strong></p></div>
+      </div>
       <p class="small-text" id="facilitator-storage-note">Observations are saved only in this browser. Copy or download them for review.</p>
       <form id="facilitator-form" aria-describedby="facilitator-storage-note">
-        <div class="facilitator-fields"><div><label for="consultant">Consultant</label><input id="consultant" name="consultant" type="text" autocomplete="off"></div><div><label for="start-time">Start time</label><input id="start-time" name="start_time" type="time"></div><div><label for="end-time">End time</label><input id="end-time" name="end_time" type="time"></div><div><label for="duration">Approximate duration</label><input id="duration" name="duration" type="text" placeholder="e.g. 52 minutes"></div><div><label for="interventions">Number of facilitator interventions</label><input id="interventions" name="interventions" type="number" min="0" step="1"></div></div>
-        <fieldset class="observation-checks"><legend>Observations</legend><label><input type="checkbox" name="initialization" value="Initialization clear"> Initialization clear</label><label><input type="checkbox" name="ingestion" value="Functional source ingestion clear"> Functional source ingestion clear</label><label><input type="checkbox" name="open_items" value="Open functional items correctly identified"> Open functional items correctly identified</label><label><input type="checkbox" name="boundary" value="Functional vs Technical boundary respected"> Functional vs Technical boundary respected</label><label><input type="checkbox" name="actions" value="Next actions understandable"> Next actions understandable</label><label><input type="checkbox" name="approvals" value="Approval instructions understandable"> Approval instructions understandable</label><label><input type="checkbox" name="build" value="Build instructions understandable"> Build instructions understandable</label><label><input type="checkbox" name="cpi" value="CPI validation understandable"> CPI validation understandable</label><label><input type="checkbox" name="document" value="Final technical document produced"> Final technical document produced</label><label><input type="checkbox" name="completion" value="Completion state understandable"> Completion state understandable</label></fieldset>
-        <label for="friction">Friction points / timestamps</label><textarea id="friction" name="friction" rows="7" placeholder="10:08 — consultant unsure where to place source&#10;10:18 — approval instruction unclear&#10;10:41 — CPI import step required assistance"></textarea>
+        <div class="facilitator-fields facilitator-fields-single"><div><label for="consultant">Consultant</label><input id="consultant" name="consultant" type="text" autocomplete="off"></div></div>
+        <fieldset class="facilitator-block"><legend>Part A · Workstation setup</legend>
+          <div class="facilitator-fields"><div><label for="setup-start">Setup start time</label><input id="setup-start" name="setup_start" type="time"></div><div><label for="setup-end">Setup end time</label><input id="setup-end" name="setup_end" type="time"></div><div><label for="setup-duration">Setup duration</label><input id="setup-duration" name="setup_duration" type="text" placeholder="e.g. 40 minutes"></div><div><label for="setup-interventions">Setup interventions (installation / access)</label><input id="setup-interventions" name="setup_interventions" type="number" min="0" step="1"></div></div>
+          <div class="observation-checks"><label><input type="checkbox" name="s_install" value="Tools installed without help"> Tools installed without help</label><label><input type="checkbox" name="s_ix1" value="Checkpoint 1 passed (VS Code to IX1)"> Checkpoint 1 passed (VS Code to IX1)</label><label><input type="checkbox" name="s_mcp" value="Checkpoint 2 passed (Claude to IX1)"> Checkpoint 2 passed (Claude to IX1)</label><label><input type="checkbox" name="s_github" value="GitHub access worked"> GitHub access worked</label><label><input type="checkbox" name="s_cpi" value="Integration Suite trial available"> Integration Suite trial available</label></div>
+          <label for="setup-friction">Setup issues / timestamps</label><textarea id="setup-friction" name="setup_friction" rows="4" placeholder="09:20 — ABAP FS certificate error, URL corrected"></textarea>
+        </fieldset>
+        <fieldset class="facilitator-block"><legend>Part B · Framework exercise</legend>
+          <div class="facilitator-fields"><div><label for="start-time">Exercise start time</label><input id="start-time" name="start_time" type="time"></div><div><label for="end-time">Exercise end time</label><input id="end-time" name="end_time" type="time"></div><div><label for="duration">Exercise duration</label><input id="duration" name="duration" type="text" placeholder="e.g. 52 minutes"></div><div><label for="interventions">Environment / access interventions</label><input id="interventions" name="interventions" type="number" min="0" step="1"></div><div><label for="process-interventions">Framework / process interventions</label><input id="process-interventions" name="process_interventions" type="number" min="0" step="1"></div></div>
+          <div class="observation-checks"><label><input type="checkbox" name="initialization" value="Initialization clear"> Initialization clear</label><label><input type="checkbox" name="identity" value="Repository name accepted by the Framework"> Repository name accepted by the Framework</label><label><input type="checkbox" name="ingestion" value="Functional source ingestion clear"> Functional source ingestion clear</label><label><input type="checkbox" name="open_items" value="Open functional items correctly identified"> Open functional items correctly identified</label><label><input type="checkbox" name="boundary" value="Functional vs Technical boundary respected"> Functional vs Technical boundary respected</label><label><input type="checkbox" name="actions" value="Next actions understandable"> Next actions understandable</label><label><input type="checkbox" name="approvals" value="Approval instructions understandable"> Approval instructions understandable</label><label><input type="checkbox" name="build" value="Build instructions understandable"> Build instructions understandable</label><label><input type="checkbox" name="sap_safety" value="SAP changes only after Framework authorization and consultant approval"> SAP changes only after Framework authorization and consultant approval</label><label><input type="checkbox" name="cpi" value="CPI validation understandable"> CPI validation understandable</label><label><input type="checkbox" name="document" value="Final technical document produced"> Final technical document produced</label><label><input type="checkbox" name="completion" value="Completion state understandable"> Completion state understandable</label></div>
+          <label for="friction">Friction points / timestamps</label><textarea id="friction" name="friction" rows="7" placeholder="10:08 — consultant unsure where to place source&#10;10:18 — approval instruction unclear&#10;10:41 — CPI import step required assistance"></textarea>
+        </fieldset>
         <div class="action-row"><button type="button" class="button button-primary" id="copy-observations">Copy Observations</button><button type="button" class="button button-secondary" id="download-observations">Download Observations</button></div>
       </form>
     </section>
